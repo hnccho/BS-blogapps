@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.web.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/web-project/3">
+            <web-module-libraries>
+                <library>
+                    <file>${libs.servlet24.classpath}</file>
+                </library>
+                <library>
+                    <file>${libs.jsp20.classpath}</file>
+                </library>
+                <library>
+                    <file>${file.reference.commons-lang-2.0.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.jdom-b10.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.rome-0.4.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.servlet-api.jar}</file>
+                </library>
+                <library files="1">
+                    <file>${file.reference.commons-logging.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.log4j-1.2.4.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.oscache-2.0.2-22Jan04.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.velocity-1.4.jar}</file>
+                </library>
+            </web-module-libraries>
+            <web-module-additional-libraries/>
+        </data>
+    </configuration>
+</project>

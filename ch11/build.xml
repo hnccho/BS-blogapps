@@ -1,0 +1,97 @@
+<project name="planet-tool" default="dist">
+	
+   <import file="properties.xml"/> 
+   
+   <property name="bc.build" value="./bin" />
+   <fileset id="planet.set" dir="${jars.dir}"> 
+        <include name="rome-0.8.jar"/>
+        <include name="rome-fetcher-0.8.jar"/>
+        <include name="velocity-1.4.jar"/>
+        <include name="velocity-dep-1.4.jar"/>
+        <include name="jdom.jar"/>
+        <include name="dom4j-1.4.jar"/>
+        <include name="jaxen-full.jar"/>
+        <include name="commons-logging.jar"/>
+        <include name="commons-lang-2.0.jar"/>
+        <include name="commons-httpclient-2.0.2.jar"/>
+    </fileset>
+    <path id="planet.path">
+		<fileset refid="planet.set" />
+    </path>
+	
+    <target name="build">
+	    <mkdir dir="./build/classes" />
+        <javac debug="true" destdir="./build/classes" 
+            excludes="**/hibernate/**,**/presentation/**" >
+            <src path="./src" />
+            <classpath>
+                <path location="../../build/compile_beans" />
+                <path refid="planet.path"/>
+            </classpath>
+        </javac>
+    	<copy todir="./build/classes" file="./src/rome.properties" />
+    </target>
+
+    <target name="dist" depends="build">
+	    <mkdir dir="./dist/planet-tool/testdata" />
+	    <mkdir dir="./dist/planet-tool/templates" />
+	    <mkdir dir="./dist/planet-tool/output" />
+	    <mkdir dir="./dist/planet-tool/theme" />
+	    <mkdir dir="./dist/planet-tool/lib" />
+	    <mkdir dir="./dist/planet-tool/src" />
+    	
+        <!-- Include jars needed to build and run -->
+        <jar basedir="./build/classes" 
+            destfile="./dist/planet-tool/lib/planet-tool.jar" />
+            
+        <copy todir="./dist/planet-tool/lib">
+            <fileset refid="planet.set" />
+	    </copy>
+
+    	<!-- Include sample theme, template, and config files -->
+        <copy todir="./dist/planet-tool/templates">
+            <fileset dir="./templates" includes="*.vm" />
+        </copy>        
+        <copy todir="./dist/planet-tool/output">
+            <fileset dir="./output" includes="*.png" />
+        </copy>
+        <copy todir="./dist/planet-tool/testdata">
+            <fileset dir="./testdata" includes="**/dummy.txt" />
+        </copy>
+        <copy file="./planet-tool.bat" todir="./dist/planet-tool" />
+        <copy file="./planet-tool.sh" todir="./dist/planet-tool" />
+        <copy failonerror="false" file="./release-setenv.sh" 
+                tofile="./dist/planet-tool/setenv.sh" />
+        <copy failonerror="false" file="./release-setenv.bat" 
+                tofile="./dist/planet-tool/setenv.bat" />
+        <chmod file="./dist/planet-tool/setenv.sh" perm="+x" />
+        <chmod file="./dist/planet-tool/planet-tool.sh" perm="+x" />
+        <copy file="./planet-config.xml" todir="./dist/planet-tool" />
+
+    	<!-- Include source and build files -->
+    	<copy todir="./dist/planet-tool/src" >
+    	    <fileset dir="./src" />
+        </copy>
+        <copy failonerror="false" file="./properties-release.xml" 
+                tofile="./dist/planet-tool/properties.xml" />
+        <copy file="./build.xml" todir="./dist/planet-tool" />
+    
+      <chmod perm="+x">
+          <fileset dir="./dist/planet-tool">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+
+    <!-- Package it up -->
+    <tar destfile="./dist/planet-tool.tar" 
+        basedir="./dist" includes="planet-tool/**" />
+    	
+ </target>
+	
+<target name="clean">
+    <delete dir="./build" />
+    <delete dir="./dist" />
+</target>
+
+</project>

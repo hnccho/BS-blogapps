@@ -1,0 +1,59 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 15 blog mailer</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch9</span>
+
+<h1>RSS And Atom In Action - Chapter 15 blog mailer example</h1>
+<hr />
+
+<p>Blog mailer reads a list of newsfeeds, collects all of the entries made in 
+the last 72 hours, puts them in a digest email and sends them to an email address.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/blogmailer directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch15
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch15
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/blogmailer
+directory. Run the example using either BlogMailer.bat (for Windows) 
+or BlogMailer.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch15/dist/blogmailer
+   $ vi BlogMailer.config.xml
+   $ ./BlogMailer.sh BlogMailer.config.xml
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch15\dist\blogmailer
+   > notepad BlogMailer.config.xml
+   > BlogMailer BlogMailer.config.xml
+</pre>
+
+<p>The vi and notepad lines are there because you will want to edit 
+the BlogMailer.config.xml file add the list of newsfeeds and the
+destination blog connection parameters.</p>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:web="http://www.netbeans.org/ns/web-project/1" 
+    name="ch18" default="dist" basedir=".">
+
+    <description>Builds, tests, and runs the project ch18</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <fileset id="buildtime.jars" dir="../common/lib" >
+        <include name="junit-3.8.1.jar" />
+        <include name="servlet-api.jar" />
+    </fileset>
+    <fileset id="common.jars" dir="../common/lib" >
+        <include name="commons-lang-2.0.jar" />
+        <include name="rome-0.8.jar" />
+        <include name="jdom.jar" />
+        <include name="jaxen-full.jar" />
+        <include name="dom4j-1.4.jar" />
+    </fileset>
+    <fileset id="blogapp.jars" dir="./web/WEB-INF/lib" >
+        <include name="commons-fileupload-1.0.jar" />
+    </fileset>
+    <path id="build.path">
+       <fileset refid="blogapp.jars" />
+       <fileset refid="buildtime.jars" />
+       <fileset refid="common.jars" />
+    </path>
+    
+    <target name="build"> 
+      <mkdir dir="./dist/filecaster/WEB-INF/classes" />
+      <javac destdir="./dist/filecaster/WEB-INF/classes" debug="true" >
+         <src path="./src" />
+         <src path="./tests" />
+         <classpath>
+            <path refid="build.path" />
+         </classpath>
+      </javac>
+   </target>
+      
+    <target name="dist" depends="build"> 
+      <copy todir="./dist/filecaster/" preservelastmodified="true" >
+          <fileset dir="./web">
+              <include name="**/**" />
+          </fileset>
+      </copy>    
+      <copy todir="./dist/filecaster/WEB-INF/lib" >
+          <fileset refid="common.jars" />
+      </copy>
+      <jar basedir="dist/filecaster" jarfile="dist/filecaster.war" /> 
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+
+   <target name="test" depends="default">
+       <junit printsummary="yes" haltonfailure="yes" filtertrace="off">
+           <classpath>
+              <pathelement path="${build.path}"/>
+              <pathelement location="./build/filecaster/WEB-INF/classes"/>
+           </classpath>
+           <formatter type="plain"/>
+           <test name="com.manning.blogapps.chapter18.filecaster.FileCasterTest" 
+               haltonfailure="no" outfile="result">
+               <formatter type="xml"/>
+           </test>
+       </junit>
+   </target>
+   
+   <target name="clean">
+      <delete dir="./dist" />
+      <delete dir="./build" />
+   </target>
+   
+</project>

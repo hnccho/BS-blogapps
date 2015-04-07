@@ -1,0 +1,71 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 10 Atom examples</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> 
+&gt; <a href="../readme.html">java</a> &gt; ch08</span>
+
+<h1>RSS And Atom In Action - Chapter 10 Atom examples</h1>
+<hr />
+
+<p>In Chapter 10 we developed a set of blog client library interfaces and both 
+an Atom protocol and MetaWeblog API implementations of those interfaces. 
+You can't run a library, so we've included a GUI based blog client that uses 
+the library.</p>
+
+<p>The example code is organized like so:</p>
+<pre>
+    $BLOGAPPS/java/ch10/src/com/manning/blogapps/blogclient
+    Generic blog client interfaces
+    
+    $BLOGAPPS/java/ch10/src/com/manning/blogapps/atomblogclient
+    Atom protocol implementation of the blog client interfaces
+    
+    $BLOGAPPS/java/ch10/src/com/manning/blogapps/metaweblogblogclient
+    MetaWeblog API implementation of the blog client interfaces
+    
+    $BLOGAPPS/java/ch10/src/com/manning/blogapps/blogclientui
+    Simple blog client GUI, written in Swing
+</pre>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/blogclient directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch10
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch10
+   > ant
+   </pre>
+   
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/blogclient 
+directory. Run the example using either blogclient.bat (for Windows) 
+or blogclient.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch10/dist/blogclient
+   $ ./blogclient.sh 
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch10\dist\blogclient
+   > blogclient 
+</pre>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<project name="ch05" default="dist">
+
+    <property name="dist.dir" value="dist/parsers" /> 
+    <property name="jars.dir" value="../common/lib" /> 
+    <property name="jar.name" value="ch05.jar" /> 
+
+    <fileset id="common.jars" dir="../common/lib" >
+        <include name="junit-3.8.1.jar" />
+        <include name="commons-lang-2.0.jar" />
+        <include name="rome-0.8.jar" />
+        <include name="log4j-1.2.4.jar" />
+        <include name="jdom.jar" />
+        <include name="saxpath.jar" />
+        <include name="jaxen-full.jar" />
+    </fileset>
+    <fileset id="blogapp.jars" dir="./lib" >
+        <include name="commons-feedparser-0.5.0-RC1.jar" />
+    </fileset>
+    <path id="blogapp.path">
+       <fileset refid="common.jars" />
+       <fileset refid="blogapp.jars" />
+    </path>
+
+    <target name="build">
+       <mkdir dir="build" />
+       <javac destdir="build" debug="true">
+          <src path="./src" />
+          <src path="./test" />
+          <classpath>
+             <path refid="blogapp.path"/>
+          </classpath>
+       </javac>  
+    </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat" />
+      </copy>
+      <chmod perm="+x">
+          <fileset dir="${dist.dir}">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="common.jars" />
+         <fileset refid="blogapp.jars" />
+	  </copy>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+   <target name="test" depends="build">
+       <junit showoutput="true" printsummary="yes" 
+           haltonfailure="yes" filtertrace="off">
+           <classpath>
+              <pathelement location="./build" />
+              <path refid="blogapp.path"/>
+           </classpath>
+           <formatter type="plain"/>
+           <test name="com.manning.blogapps.chapter05.FeedParserTest" 
+               haltonfailure="no" outfile="result">
+               <formatter type="xml"/>
+           </test>
+       </junit>
+   </target>
+   
+</project> 

@@ -1,0 +1,83 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 17 chat blogger example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch17</span>
+
+<h1>RSS And Atom In Action - Chapter 17 chat blogger example</h1>
+<hr />
+
+<p>An IRC chat robot that monitors an IRC channel. Anybody chatting in the 
+channel can post to the chat robot's blog by starting a message with the 
+nickname of the robot and using title: and content: strings using JSPWiki
+syntaxt for the content. The robot also accepts an undo command (as long 
+as it is issued within 30 seconds of last post.</p>
+
+Here's an example interaction between user 'dave' and the 'blogbot'
+<pre>
+    dave: blogbot title: Test post 123 content: Some text in __bold__
+    blogbot: Posted [AF63DF7760DAECC]
+    dave: blogbot undo
+    blogbot: Performing undo
+</pre>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/chatblogger directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch17
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch17
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/chatblogger
+directory. Run the example using either ChatBlogger.bat (for Windows) 
+or ChatBlogger.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch17/dist/chatblogger
+   $ vi config.properties
+   $ ./ChatBlogger.sh 
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch17\dist\chatblogger
+   > notepad config.properties
+   > ChatBlogger
+</pre>
+
+<p>The vi and notepad lines are there because you will want to edit 
+the config.properties file to set the IRC server name, IRC channel
+name and blog connection parameters for the chatblogger robot.</p>
+
+<p>As Chat Blogger starts up, it will print out some messages to let 
+you know that it's healthy, for example:</p>
+
+<pre>
+   $ ./ChatBlogger.sh 
+   Connected!
+   Joined #testblog
+</pre>
+
+<p>You can exit Chat Blogger by sending it the exit command from within 
+the chat room or by pressing CONTROL-C in the console window to terminate 
+the process.</p>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,62 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 11 planet aggregator example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch9</span>
+
+<h1>RSS And Atom In Action - Chapter 11 planet aggregator example</h1>
+<hr />
+
+<p>Generates a planet-style aggregation of weblogs with an HTML, RSS and OPML page. 
+Configured via a simple XML file. You can customize the output by editing 
+the Velocity templates that define the outputs.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/planet-tool directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch11
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch11
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/planet-tool
+directory. Run the example using either planet-tool.bat (for Windows) 
+or planet-tool.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch11/dist/planet-tool
+   $ vi planet-config.xml
+   $ ./planet-tool.sh planet-config.xml
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch11\dist\planet-tool
+   > notepad planet-config.xml
+   > planet-tool planet-config.xml
+</pre>
+
+<p>The vi and notepad lines are there because you will want to edit 
+the planet-config.xml file to add the newsfeed URLs you want to 
+include in the planet. You might also want to edit the Velocity
+templates that define the HTML, RSS and OPML that is generated
+in the templates directory.</p>
+
+</body>
+</html>
+
+
+
+
+

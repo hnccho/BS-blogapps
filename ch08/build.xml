@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ch08" default="dist" basedir=".">
+    <description>Builds, tests, and runs the project ch08.</description>
+   
+   <property name="dist.dir" value="dist/filedepot" /> 
+   <property name="jars.dir" value="../common/lib" /> 
+   <property name="jar.name" value="ch02.jar" /> 
+   
+   <fileset id="common.jars" dir="${jars.dir}">
+      <include name="xmlrpc-1.2-b1.jar" />
+      <include name="commons-lang-2.0.jar" />
+      <include name="commons-collections.jar" />
+      <include name="rome-0.8.jar" />
+      <include name="jdom.jar" />
+      <include name="velocity-1.4.jar" />
+   </fileset>
+   <fileset id="buildtime.jars" dir="${jars.dir}">
+      <include name="servlet-api.jar" />
+   </fileset>
+   <path id="blogapp.path">
+      <fileset refid="buildtime.jars" />
+      <fileset refid="common.jars" />
+   </path>
+
+   <target name="build">       
+      <mkdir dir="build" />
+      <javac srcdir="./src" destdir="build" debug="true" >
+         <classpath>
+            <path refid="blogapp.path"/>
+         </classpath>
+      </javac>      
+   </target>
+
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/WEB-INF/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/WEB-INF/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}">
+         <fileset dir="./web" includes="**/**" />
+	  </copy>
+      <copy todir="${dist.dir}/WEB-INF/lib">
+         <fileset refid="common.jars" />
+	  </copy>
+     <jar basedir="dist/filedepot" destfile="dist/filedepot.war" includes="**/**" />
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+</project>

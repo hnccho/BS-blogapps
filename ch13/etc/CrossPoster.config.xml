@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<cross-poster>
+	<subscription>
+		<feed-url>http://rollerweblogger.org/rss/roller</feed-url>
+		<author>David M Johnson</author>
+	</subscription>
+	<destination>	
+		<metaweblog-url>http://localhost:8080/roller/xmlrpc</metaweblog-url>
+		<username>admin</username>
+		<password>admin</password>
+		<blogid>adminblog</blogid>
+        <categoy>General</categoy>
+	</destination>
+</cross-poster>
+

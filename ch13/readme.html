@@ -1,0 +1,59 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 13 daily cross poster example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch13</span>
+
+<h1>RSS And Atom In Action - Chapter 13 dialy cross poster example</h1>
+<hr />
+
+<p>Simple newsfeed parsing and blog entry posting example that reads a list of 
+newsfeeds and posts the last 24 hous of entries from those newsfeeds to a blog.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/crossposter directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch13
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch13
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/crossposter 
+directory. Run the example using either CrossPoster.bat (for Windows) 
+or CrossPoster.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch13/dist/crossposter
+   $ vi CrossPoster.config.xml
+   $ ./CrossPoster.sh CrossPoster.config.xml
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch13\dist\crossposter
+   > notepad CrossPoster.config.xml
+   $ CrossPoster CrossPoster.config.xml
+</pre>
+
+<p>The vi and notepad lines are there because you will want to edit 
+the CrossPoster.config.xml to specify the list of source newsfeeds to be 
+read and the destination blog for the blog posts.</p>
+
+</body>
+</html>
+
+
+
+
+

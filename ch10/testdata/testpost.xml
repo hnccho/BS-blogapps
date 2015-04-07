@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+   <id>null</id>
+   <title>Atom test post title</title>
+   <content>Atom test post content</content>
+   <updated>2006-05-16T00:00:00Z</updated>
+</entry>

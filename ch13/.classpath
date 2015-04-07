@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry sourcepath="/Applications/Java/xmlrpc-1.2-b1/src/java" kind="lib" path="/common/lib/xmlrpc-1.2-b1.jar"/>
+	<classpathentry sourcepath="/Applications/Java/jdom-1.0/src/java" kind="lib" path="/common/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="/common/lib/jaxen-full.jar"/>
+	<classpathentry kind="lib" path="/common/lib/dom4j-1.4.jar"/>
+	<classpathentry kind="lib" path="/common/lib/rome-0.8.jar"/>
+	<classpathentry kind="src" path="/ch05"/>
+	<classpathentry kind="src" path="/ch10"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

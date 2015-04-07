@@ -1,0 +1,62 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 18 filecaster example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>:  <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch18</span>
+
+<h1>RSS And Atom In Action - Chapter 18 filecaster example</h1>
+<hr />
+
+<p>Simple webapp that allows file upload and makes uploaded files available 
+as podcasts.</p>
+
+<h2>Build the example</h2>
+
+<p>Use Ant to build the examples to the dist/filecaster directory. The build
+script will compile the code and build the dist/filecaster.war, which is
+ready for deployment.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch18
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch18
+   > ant
+   </pre>
+
+<h2>Deploy and run example</h2>
+
+<p>The Chapter 18 examples are part of a Java web application called "filecaster".
+To run filecaster, you must first deploy it to a Java web application server.
+You can use the Blogapps demo server, which just a customized version of Tomcat.
+To install to Tomcat or Blogapps server, just copy the filecaster WAR 
+to the webapps directory.</p>
+
+For example on UNIX (assuming Tomcat is installed in $TOMCAT):
+   <pre>
+   $ cd $BLOGAPPS/java/ch18/dist
+   $ cp -r filecaster.war $TOMCAT/webapps
+   </pre>
+
+Or on Windows (assuming Tomcat is installed in %TOMCAT%:
+   <pre>
+   $ cd %BLOGAPPS%\java\ch18\dist
+   $ copy filecaster.war %TOMCAT%\webapps
+   </pre>
+
+<p>If you're using Blogapps server, them use it's directory as the TOMCAT-DIR.</p>
+
+<p>Next, start (or restart) Tomcat and then open http://localhost:8080/filecaster
+in your browser to see the filecaster examples.</p>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+    <id>null</id>
+    <title>A test blog entry title</title>
+    <content type="html">
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+       This is test &lt;b&lt;blog entry&lt;/b&gt; content.&lt;br&gt;
+    </content>
+    <updated>2006-05-16T00:00:00Z</updated>
+</entry>
+

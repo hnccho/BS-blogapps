@@ -1,0 +1,5 @@
+file4.txt
+This is a forth file
+File number four
+The one after three
+The one two before six

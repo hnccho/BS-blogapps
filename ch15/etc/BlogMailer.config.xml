@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<blog-mailer>
+	<subscription>
+		<feed-url>http://example.com/blog/index.rss</feed-url>
+	</subscription>
+	<destination>	
+		<smtp-server>mail.example.com</smtp-server>
+		<username>scott</username>
+		<password>tiger</password>
+		<to-address>scott@example.com</to-address>
+		<from-address>scott@example.com</from-address>
+	</destination>
+</blog-mailer>
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ch10" default="dist" basedir="."> 
+   
+   <property name="dist.dir" value="dist/blogclient" /> 
+   <property name="jars.dir" value="../common/lib" /> 
+   <property name="jar.name" value="ch10.jar" /> 
+   
+   <fileset id="common.jars" dir="${jars.dir}">
+      <include name="rome-0.8.jar" />
+      <include name="jdom.jar" />
+      <include name="junit-3.8.1.jar" />
+      <include name="xmlrpc-1.2-b1.jar" />
+      <include name="commons-logging.jar" />
+      <include name="commons-lang-2.0.jar" />
+      <include name="commons-httpclient-2.0.2.jar" />
+      <include name="commons-codec-1.3.jar" />
+    </fileset>
+    <path id="blogapp.path">
+      <fileset refid="common.jars" />
+    </path>
+   
+   <target name="build">
+      <mkdir dir="build" />
+      <javac destdir="build" debug="true">
+         <src path="./src" />
+         <src path="./tests" />
+         <classpath>
+            <path refid="blogapp.path"/>
+         </classpath>
+      </javac>      
+      <copy todir="build" >
+         <fileset dir="./src" includes="**/*.properties" />
+      </copy>
+   </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/etc" />
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat" />
+      </copy>
+      <copy todir="${dist.dir}/etc">
+         <fileset dir="./testdata" includes="**/**" />
+      </copy>
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="common.jars" />
+	  </copy>
+      <chmod perm="+x">
+          <fileset dir="${dist.dir}">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+
+</project>
+

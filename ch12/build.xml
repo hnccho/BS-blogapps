@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ch12" default="dist" basedir=".">
+   
+   <property name="dist.dir" value="dist/tapi2opml" /> 
+   <property name="jars.dir" value="../common/lib" /> 
+   <property name="jar.name" value="ch12.jar" /> 
+   
+   <fileset id="common.jars" dir="${jars.dir}">
+      <include name="jaxen-full.jar" />
+      <include name="jdom.jar" />
+      <include name="dom4j-1.4.jar" />
+   </fileset>
+   <path id="blogapp.path">
+      <fileset refid="common.jars" />
+   </path>
+
+   <target name="build">
+      <mkdir dir="build" />
+      <javac srcdir="src" destdir="build" debug="true">
+         <classpath>
+            <path refid="blogapp.path"/>
+         </classpath>
+      </javac>      
+   </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat" />
+      </copy>
+      <chmod file="./dist/tapi2opml/tapi2opml.sh" perm="+x" />
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="common.jars" />
+	  </copy>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+</project>

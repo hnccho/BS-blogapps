@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/common/lib/jdom.jar" sourcepath="/Applications/Java/jdom-1.0/src/java"/>
+	<classpathentry kind="lib" path="/common/lib/jaxen-full.jar"/>
+	<classpathentry kind="lib" path="/common/lib/dom4j-1.4.jar"/>
+	<classpathentry kind="lib" path="/common/lib/mail.jar"/>
+	<classpathentry kind="lib" path="/common/lib/activation.jar"/>
+	<classpathentry kind="src" path="/ch05"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

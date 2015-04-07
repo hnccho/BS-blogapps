@@ -1,0 +1,61 @@
+<html>
+<head><title>RSS And Atom In Action - Extra 1 FeedPoster example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>:  <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ex01</span>
+
+<h1>RSS And Atom In Action - Extra 1 FeedPoster example</h1>
+<hr />
+
+<p>Command-line program reads a list of newsfeeds, parses each newsfeed,
+collects all entries published in the last X days, and posts a summary
+of those posts to a destination blog.</p>
+
+<h2>Build the example</h2>
+
+<p>Use Ant to build the examples to the dist/feedposter directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ex01
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ex01
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example, change directories into the dist/feedposter directory
+and edit the FeedPoster.config.xml file to set your newsfeed URLs as well 
+as your blog username, password, blog server URL and blog ID. Then you can 
+run the example using either FeedPoster.bat (for Windows) or FeedPoster.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ex01/dist/feedposter
+   $ vi FeedPoster.config.xml
+   $ ./FeedPoster.sh    
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ex01\dist\feedposter
+   > notepad FeedPoster.config.xml
+   > FeedPoster
+</pre>
+
+<p>The vi and notepad lines are there because you'll want to edit 
+FeedPoster.config.xml as we described above. The default settings 
+are for the Blogapps server.</p>
+
+</body>
+</html>
+
+
+
+
+

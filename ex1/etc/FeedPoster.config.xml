@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<feed-poster>
+    <title>del.icio.us links</title>
+    <days>1</days>
+	<subscription>
+		<feed-url>http://del.icio.us/rss/snoopdave</feed-url>
+	</subscription>
+	<destination>	
+		<metaweblog-url>http://locahost:8080/roller/xmlrpc</metaweblog-url>
+		<username>admin</username>
+		<password>admin</password>
+		<blogid>adminblog</blogid>
+	</destination>
+</feed-poster>
+

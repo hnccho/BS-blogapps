@@ -1,0 +1,3 @@
+file2.txt
+The is the second file
+The one after the first

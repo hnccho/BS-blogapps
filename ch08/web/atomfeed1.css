@@ -1,0 +1,80 @@
+/**
+ *
+ * Safari Themed RSS and Atom Feeds with CSS
+ * Stanley Sy (starvingartist) - http://www.stanleysy.com
+ *
+ * CSS Modified From Dive Into Mark's Another Crack at User-Friendly Feeds
+ * http://diveintomark.org/archives/2004/05/02/user-friendly-feeds
+ *
+ * Combined styles for For RSS 2.0 and Atom 0.3
+ *
+ * For more details, see:
+ * http://starvingartist.stanleysy.com/archives/2004/july/safarithemedrssandatomfeedswithcss/
+ *
+ */
+
+rss channel, feed {
+  display: block;
+  margin: 0;
+  padding: 0 0 10em 0;
+  background: #fff url(bgside.png) top right repeat-y;
+  color: #444;
+  font-family: lucida grande, arial, helvetica, verdana, bitstream vera sans, sans-serif;
+  font-size: 76%;
+  line-height: 1.4;
+}
+
+link, description, language, managingEditor, copyright, lastBuildDate, pubDate, generator, webMaster, ttl, docs,
+tagline, author, copyright, generator, content, created, issued, modified, id, subject {
+  display: none;
+}
+
+channel title, feed title {
+  display: block;
+  background: #5A84E6 url(bgtitle.png);
+  color: #fff;
+  font-size: 2em;
+  padding: 7px 10px 5px 10px;
+  border-bottom: 1px solid #2954BC;
+  line-height: 1.2;
+}
+
+info {
+  display: block;
+  line-height: 1.8;
+  font-size: 0.9em;
+  background: #ffc url(info.gif) 1em 1.3em no-repeat;
+  padding: 1em 1em 1em 3em;
+  margin: 2em 180px 2em 1em;
+  border: 1px solid #999;
+}
+
+item, entry {
+  display: block;
+  margin: 1em 180px 1em 1em;
+  border-bottom: 1px solid #999;
+  padding-bottom: 1em;
+}
+
+item title, entry title {
+  display: inline;
+  background: transparent none;
+  border-bottom: 0px solid #fff;
+  padding: 0;
+  color: #222;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+item pubDate, entry modified {
+  display: inline;
+  margin: 0.4em 0 0 1.5em;
+  color: #AAA;
+  font: 1em trebuchet ms, arial, helvetica, sans-serif;
+}
+
+item description, entry summary {
+  display: block;
+  clear: both;
+  padding-top: 0.5em;
+}

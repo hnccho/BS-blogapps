@@ -1,0 +1,69 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 5 parsing examples</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> 
+&gt; <a href="../readme.html">java</a> &gt; ch05</span>
+
+<h1>RSS And Atom In Action - Chapter 5 parsing examples</h1>
+<hr />
+
+<p>Simple newsfeed parser examples for variety of RSS and Atom newsfeeds.</p>
+
+<h2>Build the examples</h2>
+
+<p>First, use Ant to build the examples to the dist/parsers directory</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS\java
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java
+   > ant
+   </pre>
+
+<h2>Run the examples</h2>
+
+<p>To run the examples, change directories into the dist/parsers directory and use 
+the run.bat (for Windows) or the run.sh (for UNIX) to the example classes. The 
+run script puts the right classes on the classpath and calls the example class 
+that you specify on the command-line. The examples all take one argument, which 
+must be the path to a newsfeed file on your hard-disk.</p>
+
+   <pre>
+   com.manning.blogapps.chapter05.ParseRSS10    - Parses RSS 1.0 with JDOM
+   com.manning.blogapps.chapter05.ParseRSS20    - Parses RSS 2.0 with JDOM 
+   com.manning.blogapps.chapter05.ParseRSSFunky - Parses funky RSS 2.0 with JDOM
+   com.manning.blogapps.chapter05.ParseAtom     - Parses Atom with JDOM
+   com.manning.blogapps.chapter05.ParseAnyFeed  - Parses any feed with JDOM
+   com.manning.blogapps.chapter05.ParseROME     - Parses any feed with ROME
+   </pre>
+
+<p>To run any of these, use the run script. Note that the above examples all
+require a file, not a URL. So if you want to parse a feed from the web, 
+you'll have to save it to disk first.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch05/dist/parsers
+   $ ./run.sh com.manning.blogapps.chapter05.ParseRSS10 example-rss10.xml
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch05\dist\parsers
+   > run com.manning.blogapps.chapter05.ParseRSS10 example-rss10.xml
+   </pre>
+       
+There are some test newsfeed files that you can try in the 
+$BLOGAPPS/testdata directory.
+
+</body>
+</html>
+
+
+

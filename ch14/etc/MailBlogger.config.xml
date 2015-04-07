@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+   <mail-blogger>
+      <codeword>spazmo</codeword>
+      <mailbox>
+         <username>scott</username>
+         <password>tiger</password>
+         <pop-server>mail.example.com</pop-server>
+      </mailbox>
+      <destination>
+         <metaweblog-url>http://localhost:8080/roller/xmlrpc</metaweblog-url>
+         <username>admin</username>
+         <password>admin</password>
+         <blogid>adminblog</blogid>
+         <category>Java</category>
+         <category>Music</category>
+      </destination>
+   </mail-blogger>

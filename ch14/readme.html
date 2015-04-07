@@ -1,0 +1,59 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 14 mail blogger example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch14</span>
+
+<h1>RSS And Atom In Action - Chapter 14 mail blogger example</h1>
+<hr />
+
+<p>Mail blogger monitors a POP3 mailbox, looking for emails that start with a 
+codeword and when one is found it posts it to a blog.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/mailblogger directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch14
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch14
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example and change directories into the dist/mailblogger 
+directory. Run the example using either MailBlogger.bat (for Windows) 
+or MailBlogger.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch14/dist/mailblogger
+   $ vi MailBlogger.config.xml
+   $ ./MailBlogger.sh MailBlogger.config.xml
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ch014\dist\mailblogger
+   > notepad MailBlogger.config.xml
+   > MailBlogger MailBlogger.config.xml
+</pre>
+
+<p>The vi and notepad lines are there because you will want to edit 
+the MailBlogger.config.xml file to set your blog codeword, POP3 
+connection parameters and blog connection information.</p>
+
+</body>
+</html>
+
+
+
+
+

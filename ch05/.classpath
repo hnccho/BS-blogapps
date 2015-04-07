@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/common"/>
+	<classpathentry kind="var" path="JUNIT_HOME/junit.jar" sourcepath="ECLIPSE_HOME/plugins/org.eclipse.jdt.source_3.0.0/src/org.junit_3.8.1/junitsrc.zip"/>
+	<classpathentry kind="lib" path="/common/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="/common/lib/rome-0.8.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-lang-2.0.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-feedparser-0.5.0-RC1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/common/lib/xml-apis.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

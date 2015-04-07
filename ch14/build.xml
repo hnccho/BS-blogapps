@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project name="ch14" default="dist">
+
+   <property name="dist.dir" value="dist/mailblogger" /> 
+   <property name="jars.dir" value="../common/lib" /> 
+   <property name="jar.name" value="ch14.jar" /> 
+
+      <fileset id="parser.jars" dir="../ch05/dist/parsers/lib">
+      <include name="ch05.jar" />
+   </fileset>
+   <fileset id="client.jars" dir="../ch10/dist/blogclient/lib">
+      <include name="ch10.jar" />
+   </fileset>
+   <fileset id="common.jars" dir="../common/lib">
+      <include name="mail.jar" />
+      <include name="activation.jar" />
+      <include name="jaxen-full.jar" />
+      <include name="jdom.jar" />
+      <include name="dom4j-1.4.jar" />
+      <include name="xmlrpc-1.2-b1.jar" />
+   </fileset>
+   <path id="blogapp.path">
+      <fileset refid="parser.jars" />
+      <fileset refid="client.jars" />
+      <fileset refid="common.jars" />
+   </path>
+
+   <target name="build">
+      <mkdir dir="build" />
+      <javac srcdir="src" destdir="build" debug="true">
+         <classpath>
+            <path refid="blogapp.path"/>
+         </classpath>
+      </javac>      
+   </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat, *.xml" />
+      </copy>
+      <chmod perm="+x">
+          <fileset dir="${dist.dir}">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="common.jars" />
+         <fileset refid="parser.jars" />
+         <fileset refid="client.jars" />
+	  </copy>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+</project> 

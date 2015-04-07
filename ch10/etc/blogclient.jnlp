@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <jnlp
+    codebase="http://localhost:8080/roller/blogclient"
+    href="blogclient.jnlp">
+    <information>
+       <title>RSS and Atom In Action - BlogClient</title>
+       <vendor>Dave Johnson</vendor>
+       <description>BlogClient for MetaWeblog and Atom based blogs</description>
+       <description kind="short">BlogClient</description>
+       <offline-allowed/>
+     </information>
+     <resources>
+       <j2se version="1.4"/>
+       <jar href="ch10.jar"/>
+       <jar href="rome-0.5.jar"/>
+       <jar href="jdom.jar"/>
+       <jar href="xmlrpc-1.2-b1.jar"/>
+       <jar href="commons-codec-1.3.jar"/>
+       <jar href="commons-logging.jar"/>
+       <jar href="commons-lang-2.0.jar"/>
+       <jar href="commons-httpclient-2.0.2.jar"/>
+     </resources>
+     <application-desc main-class="com.manning.blogapps.chapter10.atomclientui.AtomLoginFrame"/>
+</jnlp>
+

@@ -1,0 +1,58 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 2 Blogposter example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> 
+&gt; <a href="../readme.html">java</a> &gt; ch02</span>
+
+<h1>RSS And Atom In Action - Chapter 2 Blogposter example</h1>
+<hr />
+
+<p>Simple MetaWeblog API example that posts to a blog from the command line.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/blogposter directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS\java\ch02
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch02
+   > ant
+   </pre>
+   
+<h2>Run the example</h2>
+
+<p>To run the example, change directories into the dist/blogposter directory
+and edit the config.properties file to set your blog username, password and
+blog server URL. Then you can run the example using either blogpsoster.bat
+(for Windows) or blogposter.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ch02/dist/blogposter
+   $ vi config.properties
+   $ ./blogposter.sh "This is blog title" "This is a description"    
+</pre>
+
+Or on Windows:
+<pre>
+   > cd $BLOGAPPS\java\ch02\dist\blogposter
+   > notepad config.properties
+   > blogposter "This  is a blog title" "This is a description"
+</pre>
+
+<p>The vi and notepad lines are there because you might want to edit 
+config.properties to set the URL, username and password for your blogs 
+MetaWeblog API interface. The default settings are for the Blogapps
+demo server.</p>
+
+</body>
+</html>
+
+

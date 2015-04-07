@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project name="ch16" default="dist">
+
+   <property name="dist.dir" value="dist/blogtasks" /> 
+   <property name="jars.dir" value="../common/lib" /> 
+   <property name="jar.name" value="ch16.jar" /> 
+
+   <fileset id="blogclient.jars" dir="../ch10/dist/blogclient/lib">
+      <include name="ch10.jar" />
+   </fileset>
+   <fileset id="common.jars" dir="../common/lib">
+      <include name="xmlrpc-1.2-b1.jar" />
+      <include name="commons-httpclient-2.0.2.jar" />
+      <include name="commons-logging.jar" />
+      <include name="commons-codec-1.3.jar" />
+      <include name="rome-0.8.jar" />
+      <include name="jdom.jar" />
+   </fileset>
+   <path id="blogapp.path">
+      <fileset refid="blogclient.jars" />
+      <fileset refid="common.jars" />
+   </path>
+   
+   <target name="build">
+      <mkdir dir="build" />
+      <javac srcdir="src" destdir="build" debug="true">
+         <classpath>
+            <path refid="blogapp.path"/>
+         </classpath>
+      </javac>      
+   </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat, *.xml" />
+      </copy>
+      <chmod perm="+x">
+          <fileset dir="${dist.dir}">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="blogclient.jars" />
+         <fileset refid="common.jars" />
+	  </copy>
+      <fixcrlf srcdir="./dist" eol="dos" includes="**/*.bat" />
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+</project> 
+
+

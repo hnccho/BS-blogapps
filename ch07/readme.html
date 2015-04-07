@@ -1,0 +1,117 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 6 ROME parsing examples</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> 
+&gt; <a href="../readme.html">java</a> &gt; ch07</span>
+
+<h1>RSS And Atom In Action - Chapter 7 ROME parsing examples</h1>
+<hr />
+
+<p>Simple newsfeed parser examples for variety of RSS and Atom newsfeeds.</p>
+
+<h2>Build the examples</h2>
+
+<p>First, use Ant to build the examples, then cd to the ch07/dist/rome-examples
+ directory to run the examples using the run scripts described later in this 
+document.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS\java
+   $ ant
+   $ cd ch07/dist/rome-examples
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java
+   > ant
+   > cd ch07\dist\rome-examples
+   </pre>
+
+<h2>Run the examples</h2>
+
+<p>To run the examples, change directories into the dist/rome-examples directory 
+and use the run.bat (for Windows) or the run.sh (for UNIX) to the example 
+classes. The run script puts the right classes on the classpath and calls the 
+example class that you specify on the command-line. The examples all take one 
+argument, which must be the path to a newsfeed file on your hard-disk.</p>
+
+Simple parse and print examples
+<pre>
+com.manning.blogapps.chapter07.ParseFeed
+   USAGE: ParseFeed &lt;feed-file-name&gt;
+   Parses to SyndFeed model, takes filename argument
+
+com.manning.blogapps.chapter07.ParseFeedFunky
+   USAGE: ParseFeedFunky &lt;feed-file-name&gt;
+   Parses to SyndFeed model w/Content Module, takes filename argument
+
+com.manning.blogapps.chapter07.ParseFeedRSS 
+   USAGE: ParseFeedRSS &lt;feed-file-name&gt;
+   Parses to RSS model, takes filename argument
+
+com.manning.blogapps.chapter07.ParseFeedAtom
+   USAGE: ParseFeedAtom &lt;feed-file-name&gt;
+   Parses to Atom model, takes filename argument
+
+com.manning.blogapps.chapter07.fetcher.FeedFetcherTest
+   USAGE: FeedFetcherTest [disk|memory] &lt;feed-url&gt;
+   Fetches and parses with ROME Fetcher, prints fetcher events
+   
+com.manning.blogapps.chapter07.fetcher.ParseFeedFetcher
+   USAGE: ParseFeedFetcher &lt;feed-url&gt;
+   Version of ParseFeed that uses ROME Fetcher
+</pre>
+
+Simple generate feed examples (all generate a simple one element feed)
+<pre>
+com.manning.blogapps.chapter07.GenerateFeed
+   Generate valid RSS or Atom feed from SyndFeed model
+
+com.manning.blogapps.chapter07.GenerateFeedRSS
+   Generate RSS via RSS WireFeed model
+
+com.manning.blogapps.chapter07.GenerateFeedFunky
+   Generate funky RSS via RSS WireFeed model and Content Module
+
+com.manning.blogapps.chapter07.GenerateFeedAtom
+   Generate Atom via Atom WireFeed model
+</pre>
+
+<p>To run any of the above examples, use the run script. Note that almost all 
+of the above examples require a filename, not a URL. If you want to parse a feed 
+from the web, you'll have to save it to disk first.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch07/dist/rome-examples
+   $ ./run.sh com.manning.blogapps.chapter07.ParseFeed ../../../../testdata/rss_2.0-rssweather.xml
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ch05\dist\rome-examples
+   > run com.manning.blogapps.chapter07.ParseFeed ..\..\..\..\testdata/rss_2.0-rssweather.xml
+   </pre>
+       
+<p>There are some test newsfeed files that you can try in the $BLOGAPPS/testdata directory.</p>
+
+<p>There are also some example classes that you cannot run: a Atom protocol
+extensions module and a date-smart RSS 0.91 parser. These are included in the 
+run scripts via src/rome.properties.<p>
+<pre>
+Publish Control module (supports Atom protocol extensions)
+   com.manning.blogapps.chapter07.pubcontrol.PubControlModule
+   com.manning.blogapps.chapter07.pubcontrol.PubControlModuleImpl
+   com.manning.blogapps.chapter07.pubcontrol.PubControlModuleGenerator
+   com.manning.blogapps.chapter07.pubcontrol.PubControlModuleParser
+   
+Date-smart RSS 0.91 (Userland) parser
+   com.manning.blogapps.chapter07.parsers
+   com.manning.blogapps.chapter07.parsers
+</pre>
+
+</body>
+</html>

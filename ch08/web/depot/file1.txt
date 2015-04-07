@@ -1,0 +1,5 @@
+file1.txt
+This a just a simple text file
+A file that is full of text
+Text is what's inside
+Inside you will find text

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project name="ch07" default="dist">
+
+    <property name="dist.dir" value="dist/rome-examples" /> 
+    <property name="jars.dir" value="../common/lib" /> 
+    <property name="jar.name" value="ch07.jar" /> 
+
+    <fileset id="common.jars" dir="../common/lib" >
+        <include name="rome-0.8.jar" />
+        <include name="rome-fetcher-0.8.jar" />
+        <include name="content-0.4.jar" />
+        <include name="jdom.jar" />
+    </fileset>
+    <path id="blogapp.path">
+       <fileset refid="common.jars" />
+    </path>
+
+    <target name="build">
+       <mkdir dir="build" />
+       <javac destdir="build" debug="true">
+          <src path="./src" />
+          <classpath>
+             <path refid="blogapp.path"/>
+          </classpath>
+       </javac>  
+      <copy todir="./build" failonerror="false" >
+         <fileset dir="./src" includes="*.properties" />
+      </copy>
+    </target>
+   
+   <target name="dist" depends="build">
+      <mkdir dir="${dist.dir}/lib" />
+      <jar basedir="build" 
+          destfile="${dist.dir}/lib/${jar.name}" includes="**/**" />      
+      <copy todir="${dist.dir}" failonerror="false" >
+         <fileset dir="./etc" includes="*.properties,*.sh,*.bat" />
+      </copy>
+      <chmod perm="+x">
+          <fileset dir="${dist.dir}">
+              <include name="**/*.sh"/>
+          </fileset>
+      </chmod>
+      <copy todir="${dist.dir}/lib">
+         <fileset refid="common.jars" />
+	  </copy>
+   </target>
+   
+   <target name="clean">
+      <delete dir="./build" />
+      <delete dir="./dist" />
+   </target>
+   
+</project> 

@@ -1,0 +1,66 @@
+<html>
+<head><title>RSS And Atom In Action - Chapter 12 Technorati API example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>: <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ch12</span>
+
+<h1>RSS And Atom In Action - Chapter 12 Technorati API example</h1>
+<hr />
+
+<p>Technorati API example that generates an OPML file containing all of the 
+Technorati blog cosmos, link cosmos or outbound links found for the blog at 
+specified URL.</p>
+
+<h2>Build the example</h2>
+
+<p>First, use Ant to build the example to the dist/tapi2opml directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ch12
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd $BLOGAPPS\examples\java\ch12
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>Before you can run the example you'll need to get a Technorati API
+key. Go to http://technorati.com/developers and sign
+up for the developer program to get a free 500 query per day key.
+Put that key into the dist/tapi2opml directory so that it will be
+on the classpath for tapi2opml.</p>
+
+<p>To run the example and change directories into the dist/tapi2opml
+directory. Run the example using either tapi2opml.bat (for Windows) 
+or tapi2opml.sh (for UNIX).</p>
+
+<p>The program takes three arguments: the type of query (blogcosmos, 
+linkcosmos or outbound), the URL of the target blog and a 
+filename where results are to be stored.</p>
+
+<pre>tapi2opml.sh [blogcosmos|linkcosmos|outbound] [search] [filename]</pre>
+
+<p>For example on UNIX:</p>
+<pre>
+   $ cd $BLOGAPPS/examples/java/ch12/dist/tapi2opml
+   $ ./tapi2opml.sh blogcosmos http://rollerweblogger.org/page/roller daveslinks.opml
+</pre>
+
+<p>Or on Windows:</p>
+<pre>
+   > cd $BLOGAPPS\examples\java\ch12\dist\tapi2opml
+   > tapi2opml blogcosmos http://rollerweblogger.org/page/roller daveslinks.opml
+</pre>
+
+</body>
+</html>
+
+
+
+
+

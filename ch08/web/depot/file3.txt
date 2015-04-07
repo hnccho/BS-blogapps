@@ -1,0 +1,4 @@
+file3.txt
+Hi it is me, I am three
+I'm stuck between two and  four
+Isn't that odd?

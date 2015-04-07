@@ -1,0 +1,62 @@
+<html>
+<head><title>RSS And Atom In Action - Extra 2 Grabber example</title></head>
+<body style="margin: 20px">
+
+<span style="font-size:small;"><b>Your trail</b>:  <a href="../..">Blogapps</a> &gt; <a href="../readme.html">java</a> &gt; ex01</span>
+
+<h1>RSS And Atom In Action - Extra 2 Grabber example</h1>
+<hr />
+
+<p>Command-line program that downloads blog entries from a blog, saves
+each one as an HTML file and creates an index that links to each one.</p>
+
+<h2>Build the example</h2>
+
+<p>Use Ant to build the examples to the dist/grabber directory.</p>
+
+For example on UNIX:
+   <pre>
+   $ cd $BLOGAPPS/java/ex02
+   $ ant
+   </pre>
+
+Or on Windows:
+   <pre>
+   > cd %BLOGAPPS%\java\ex02
+   > ant
+   </pre>
+
+<h2>Run the example</h2>
+
+<p>To run the example, change directories into the dist/grabber directory
+and edit the config.properties file to set your blog username, password and
+blog server URL, blog ID and the path to the directory into which you'd like
+to download files. Then you can run the example using either Grabber.bat
+(for Windows) or Grabber.sh (for UNIX).</p>
+
+For example on UNIX:
+<pre>
+   $ cd $BLOGAPPS/java/ex02/dist/grabber
+   $ vi config.properties
+   $ ./Grabber.sh    
+</pre>
+
+Or on Windows:
+<pre>
+   > cd %BLOGAPPS%\java\ex02\dist\grabber
+   > notepad config.properties
+   > Grabber
+</pre>
+
+<p>The vi and notepad lines are there because you might want to edit 
+config.properties to set the URL, username and password for your blogs 
+MetaWeblog API interface. The default settings are for the Blogapps
+demo server.</p>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding='utf-8'?>
+<?xml-stylesheet href="atomfeed2.css" type="text/css" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>File Depot Newsfeed</title>
+    <subtitle>File Depot Newsfeed</subtitle>
+    <link rel="alternate" type="text/html" href="$baseUrl/filedepot.jsp" />
+    <link rel="self" type="application/atom+xml" href="$selfUrl" />
+    <id>$selfUrl</id>
+    <updated>$utilities.formatIso8601Date($depot.getLastUpdateDate())</updated> 
+    <generator>Chapter 08 filedepot example</generator>
+    #set( $files = $depot.getFiles() )
+    #foreach( $file in $files )
+    <entry >
+        <title>$file.name</title>
+        <summary>$file.name</summary>
+        <author><name>generated</name></author>
+        <updated>$utilities.formatIso8601Time($file.lastModified())</updated>
+        <link rel="alternate" href="$depotUrl/$file.name" />
+        <id>$depotUrl/$file.name</id>
+        <content type="html">
+        $utilities.escapeXml("Click <a href='$depotUrl/$file.name'>$file.name</a> to download the file.")              
+        </content> 
+    </entry>  
+    #end
+</feed>
