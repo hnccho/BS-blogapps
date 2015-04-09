@@ -38,6 +38,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
  * @author Dave Johnson
  */
 public class PlanetEntryData implements Serializable, Comparable {
+	
     protected String id = null;
     protected String handle = null;
     protected String title = null;
@@ -73,7 +74,8 @@ public class PlanetEntryData implements Serializable, Comparable {
      * Init entry from Rome entry
      */
     private void initFromRomeEntry(SyndFeed romeFeed, SyndEntry romeEntry) {
-        setAuthor(romeEntry.getAuthor());
+
+    	setAuthor(romeEntry.getAuthor());
         setTitle(romeEntry.getTitle());
         setPermalink(romeEntry.getLink());
         
@@ -136,6 +138,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setId(String id) {
         this.id = id;
     }
+    
     /**
      * @hibernate.property column="categories" non-null="false" unique="false"
      */
@@ -145,6 +148,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setCategoriesString(String categoriesString) {
         this.categoriesString = categoriesString;
     }
+    
     /**
      * @hibernate.many-to-one column="subscription_id" cascade="save-update" not-null="true"
      */
@@ -154,6 +158,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setSubscription(PlanetSubscriptionData subscription) {
         this.subscription = subscription;
     }
+    
     /**
      * @hibernate.property column="author" non-null="false" unique="false"
      */
@@ -163,6 +168,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setAuthor(String author) {
         this.author = author;
     }
+    
     /**
      * @hibernate.property column="content" non-null="false" unique="false"
      */
@@ -172,6 +178,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setContent(String content) {
         this.content = content;
     }
+    
     /**
      * @hibernate.property column="guid" non-null="false" unique="true"
      */
@@ -181,6 +188,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setGuid(String guid) {
         this.guid = guid;
     }
+    
     /**
      * @hibernate.property column="handle" non-null="false" unique="false"
      */
@@ -190,6 +198,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setHandle(String handle) {
         this.handle = handle;
     }
+    
     /**
      * @hibernate.property column="published" non-null="true" unique="false"
      */
@@ -199,6 +208,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setPublished(Date published) {
         this.published = published;
     }
+    
     /**
      * @hibernate.property column="permalink" non-null="true" unique="false"
      */
@@ -208,6 +218,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setPermalink(String permalink) {
         this.permalink = permalink;
     }
+    
     /**
      * @hibernate.property column="title" non-null="false" unique="false"
      */
@@ -217,6 +228,7 @@ public class PlanetEntryData implements Serializable, Comparable {
     public void setTitle(String title) {
         this.title = title;
     }
+    
     /**
      * @hibernate.property column="updated" non-null="false" unique="false"
      */

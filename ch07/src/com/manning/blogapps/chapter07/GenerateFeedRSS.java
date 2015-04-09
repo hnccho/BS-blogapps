@@ -30,7 +30,7 @@ public class GenerateFeedRSS {
         channel.setLink("http://example.com/feeds/blog1");                                           
         channel.setPubDate(new Date()); 
                    
-        List items = new ArrayList();
+        List<Item> items = new ArrayList<Item>();
         
         Item item1 = new Item();
         item1.setTitle("Entry1");

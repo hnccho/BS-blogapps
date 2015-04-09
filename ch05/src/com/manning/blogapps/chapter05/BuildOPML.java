@@ -15,10 +15,12 @@ import java.util.Map;
 public class BuildOPML {
 	
     public static void main(String[] args) throws Exception {
+    	
         FileReader fr = new FileReader(args[0]);
         BufferedReader br = new BufferedReader(fr);
         String line = null;
         IFeedParser parser = new AnyFeedParser();
+        
         StringBuffer sb = new StringBuffer();
         sb.append("<?xml version='1.0' encoding='UTF-8' ?>\n");
         sb.append("<opml version='1.0'>\n");
@@ -40,6 +42,7 @@ public class BuildOPML {
             }
         }
         sb.append("      </outline>\n   </body>\n</opml>");
+
         FileWriter fw = new FileWriter("list.opml");
         fw.write(sb.toString());
         fw.flush();

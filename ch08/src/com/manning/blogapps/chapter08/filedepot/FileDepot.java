@@ -14,7 +14,7 @@ import java.util.Date;
 public class FileDepot implements Depot {
 
 	private String path;
-    private ArrayList files = new ArrayList();
+    private ArrayList<File> files = new ArrayList<File>();
     private Date lastModified = null;
     
     /** Create file depot in existing directory */
@@ -38,7 +38,7 @@ public class FileDepot implements Depot {
     }
     
     /** Get files sorted in reverse chronological order */
-    public synchronized Collection getFiles() {
+    public synchronized Collection<File> getFiles() {
         return files;
     }
     
@@ -47,7 +47,7 @@ public class FileDepot implements Depot {
     }
 
     /** Helps to sort files in reverse chrono order */
-    class FileComparator implements Comparator {
+    class FileComparator implements Comparator<Object> {
         public int compare(Object o1, Object o2) {
             File file1 = (File)o1;
             File file2 = (File)o2;

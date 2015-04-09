@@ -18,7 +18,9 @@ import com.manning.blogapps.chapter08.filedepot.FileDepot;
  */
 public class DepotAtomServlet extends VelocityServlet {
 
-    public Template handleRequest( HttpServletRequest request, 
+	private static final long serialVersionUID = 1L;
+
+	public Template handleRequest( HttpServletRequest request, 
                                    HttpServletResponse response, 
                                    Context context)
                                    throws Exception {

@@ -26,7 +26,7 @@ public class FileDepotTest extends TestCase {
         assertEquals(expectedDate, depot.getLastUpdateDate());
         
         long lastLastModified = Long.MAX_VALUE;
-        Iterator files = depot.getFiles().iterator();
+        Iterator<?> files = depot.getFiles().iterator();
         while (files.hasNext()) {
             File file = (File) files.next();
             assertTrue(file.lastModified() <= lastLastModified);

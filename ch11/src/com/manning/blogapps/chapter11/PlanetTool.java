@@ -163,6 +163,7 @@ public class PlanetTool extends PlanetManagerImpl {
     
     public List getAggregation(
             PlanetGroupData group, int maxEntries) throws Exception {
+    	
         long startTime = System.currentTimeMillis();
         List aggregation = null;
         try {
@@ -202,8 +203,7 @@ public class PlanetTool extends PlanetManagerImpl {
             throw new Exception(e);
         }
         long endTime = System.currentTimeMillis();
-        logger.info("Generated aggregation in "
-                +((endTime-startTime)/1000.0)+" seconds");
+        logger.info("Generated aggregation in " + ((endTime-startTime)/1000.0)+" seconds");
         return aggregation;
     }
     
@@ -337,8 +337,7 @@ public class PlanetTool extends PlanetManagerImpl {
             group.setDescription(    getString(groupElem, "description"));
             group.setMaxFeedEntries( getInt(   groupElem, "max-feed-entries"));
             group.setMaxPageEntries( getInt(   groupElem, "max-page-entries"));
-            group.setCategoryRestriction(
-                    getString(groupElem, "category-restriction"));
+            group.setCategoryRestriction(getString(groupElem, "category-restriction"));
             
             XPath refsPath = XPath.newInstance("subscription-ref");
             Iterator refs = refsPath.selectNodes(groupElem).iterator();

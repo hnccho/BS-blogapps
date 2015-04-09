@@ -82,6 +82,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setId(String id) {
         this.id = id;
     }
+    
     /** 
      * @hibernate.bag lazy="true" inverse="true" cascade="delete" 
      * @hibernate.collection-key column="subscription_id"
@@ -94,6 +95,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setEntries(List entries) {
         this.entries = entries;
     }
+    
     /** 
      * @hibernate.property column="feed_url" non-null="true" unique="false"
      */
@@ -103,6 +105,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setFeedUrl(String feedUrl) {
         this.feedUrl = feedUrl;
     }
+    
     /** 
      * @hibernate.property column="last_updated" non-null="false" unique="false"
      */
@@ -112,6 +115,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+    
     /** 
      * @hibernate.property column="site_url" non-null="false" unique="false"
      */
@@ -121,6 +125,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setSiteUrl(String siteUrl) {
         this.siteUrl = siteUrl;
     }
+    
     /** 
      * @hibernate.property column="title" non-null="false" unique="false"
      */
@@ -130,6 +135,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setTitle(String title) {
         this.title = title;
     }
+    
     /** 
      * @hibernate.property column="author" non-null="false" unique="false"
      */
@@ -139,6 +145,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setAuthor(String author) {
         this.author = author;
     }
+    
     /** 
      * @hibernate.property column="inbound_links" non-null="false" unique="false"
      */
@@ -148,6 +155,7 @@ public class PlanetSubscriptionData implements Serializable, Comparable {
     public void setInboundlinks(int inboundlinks) {
         this.inboundlinks = inboundlinks;
     }
+    
     /** 
      * @hibernate.property column="inbound_blogs" non-null="false" unique="false"
      */

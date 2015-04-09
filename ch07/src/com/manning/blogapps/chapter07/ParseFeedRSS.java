@@ -25,6 +25,7 @@ public class ParseFeedRSS {
     }
 	
     public void parseFeed(InputStream is) throws Exception {
+    	
         WireFeedInput input = new WireFeedInput();                  
         WireFeed wireFeed = input.build(new InputStreamReader(is)); 
         if (!(wireFeed instanceof Channel)) {            
@@ -32,7 +33,7 @@ public class ParseFeedRSS {
             return;
         }
         Channel channel = (Channel)wireFeed;                        
-        Iterator items = channel.getItems().iterator();
+        Iterator<?> items = channel.getItems().iterator();
         while (items.hasNext()) {                                   
             Item item = (Item)items.next();
             
@@ -48,7 +49,7 @@ public class ParseFeedRSS {
             for (int i=0; i < item.getEnclosures().size(); i++) {   
                 Enclosure enc = (Enclosure)item.getEnclosures().get(i);
                 System.out.println(
-                        " Enclosure type=" + enc.getType() +
+                        "  Enclosure type=" + enc.getType() +
                         " length="         + enc.getLength() +
                         " url="            + enc.getUrl());
             }

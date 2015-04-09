@@ -20,7 +20,8 @@ public class ParseFeedParser {
     }
     
     public ParseFeedParser(String[] args) throws Exception {
-        FileInputStream inputStream = new FileInputStream(args[0]);
+ 
+    	FileInputStream inputStream = new FileInputStream(args[0]);
         
         FeedParserListener listener = new DefaultFeedParserListener() {
             public void onItem(FeedParserState state, 

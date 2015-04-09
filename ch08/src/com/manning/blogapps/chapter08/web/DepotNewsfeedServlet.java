@@ -13,7 +13,9 @@ import com.manning.blogapps.chapter08.filedepot.FileDepot;
 
 public class DepotNewsfeedServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request,                   
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request,                   
         HttpServletResponse response) throws ServletException, IOException {  
 
         ServletContext application = this.getServletContext();    

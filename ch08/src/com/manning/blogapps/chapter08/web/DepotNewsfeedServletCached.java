@@ -14,7 +14,9 @@ import com.manning.blogapps.chapter08.filedepot.Depot;
 import com.manning.blogapps.chapter08.filedepot.DepotNewsfeedWriter;
 import com.manning.blogapps.chapter08.filedepot.FileDepot;
 
-public class DepotNewsfeedServletCached extends HttpServlet {    
+public class DepotNewsfeedServletCached extends HttpServlet { 
+	
+	private static final long serialVersionUID = 1L;
 	LRUCache cache = new LRUCache(5, 5400);                      
                                                                 
     protected void doGet(                                        

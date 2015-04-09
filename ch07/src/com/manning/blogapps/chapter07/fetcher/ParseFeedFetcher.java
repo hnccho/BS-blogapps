@@ -33,7 +33,7 @@ public class ParseFeedFetcher {
         FeedFetcher feedFetcher = new HttpURLFeedFetcher(feedInfoCache);
         SyndFeed feed = feedFetcher.retrieveFeed(new URL(feedURL));
                 
-        Iterator entries = feed.getEntries().iterator();
+        Iterator<?> entries = feed.getEntries().iterator();
         while (entries.hasNext()) {  
             SyndEntry entry = (SyndEntry)entries.next();
             

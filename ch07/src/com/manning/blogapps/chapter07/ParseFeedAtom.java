@@ -27,14 +27,16 @@ public class ParseFeedAtom {
     }
 	
     public void parseFeed(InputStream is) throws Exception {
+    	
         WireFeedInput input = new WireFeedInput();                      
         WireFeed wireFeed = input.build(new InputStreamReader(is));     
         if (!(wireFeed instanceof Feed)) {               
             System.out.println("Not an Atom feed");
             return;
         }
+        
         Feed feed = (Feed)wireFeed;                                     
-        Iterator entries = feed.getEntries().iterator();
+        Iterator<?> entries = feed.getEntries().iterator();
         while (entries.hasNext()) {                                     
             Entry entry = (Entry)entries.next();
             

@@ -63,28 +63,31 @@ public class AnyFeedParser implements IFeedParser {
         Document feedDoc = builder.build(reader);
         Element root = feedDoc.getRootElement();
         
-        if (root.getName().equals("feed")) return parseAtom(root);  
+        if (root.getName().equals("feed")) {
+        	return parseAtom(root);
+        }	
         return parseRSS(root);                                   
     }
     
     public Map<String, Object> parseAtom(Element root) throws Exception {   
-        URL baseURI = findBaseURI(root);  
+
+    	URL baseURI = findBaseURI(root);  
         
         Map<String, Object> feedMap = new HashMap<String, Object>();
         put(feedMap,"title", parseAtomContent("title", root, ns));   
         put(feedMap,"link", parseAtomLink(baseURI, root, ns));      
-        put(feedMap, new String[] {"subtitle","description"},  
-                parseAtomContent("subtitle", root, ns));
+        put(feedMap, new String[] {"subtitle", "description"},  
+                     parseAtomContent("subtitle", root, ns));
         
         List<Map<String, Object>> itemList = new ArrayList<Map<String, Object>>();
-        put(feedMap, new String[] {"entries","items"}, itemList);  
+        put(feedMap, new String[] {"entries", "items"}, itemList);  
         
         Iterator<?> items = root.getChildren("entry",ns).iterator();  
         while (items.hasNext()) {
             Element item = (Element) items.next();
             Map<String, Object> itemMap = new HashMap<String, Object>();
             itemList.add(itemMap);
-            put(itemMap, new String[] {"id","guid"}, 
+            put(itemMap, new String[] {"id", "guid"}, 
             			 item.getChildText("id", ns));
             put(itemMap, "title", parseAtomContent("title", item, ns));
             put(itemMap, new String[] {"summary", "description"}, 
@@ -93,7 +96,7 @@ public class AnyFeedParser implements IFeedParser {
             put(itemMap, "content", parseAtomContent("content", item, ns));
             String dt = item.getChildText("updated", ns);
             if (dt != null) {
-                put(itemMap, new String[] {"updated","pubDate"},     
+                put(itemMap, new String[] {"updated", "pubDate"},     
                         	 ISO8601DateParser.parse(dt));
             }
         }
@@ -102,30 +105,33 @@ public class AnyFeedParser implements IFeedParser {
     
     Map<String, Object> parseRSS(Element root) throws Exception {       
         Namespace contentNS = Namespace.getNamespace(               
-                "content","http://purl.org/rss/1.0/modules/content/");
+                "content", "http://purl.org/rss/1.0/modules/content/");
         Namespace dcNS = Namespace.getNamespace(                    
-                "dc","http://purl.org/dc/elements/1.1/");
+                "dc", "http://purl.org/dc/elements/1.1/");
+
         Namespace ns = null;
         if (root.getName().equals("rss")) {  
             ns = Namespace.NO_NAMESPACE;
         } else {
             ns = Namespace.getNamespace("http://purl.org/rss/1.0/");
         }
-        Element channel = root.getChild("channel",ns);  
+        Element channel = root.getChild("channel", ns);  
         Map<String, Object> feedMap = new HashMap<String, Object>();
-        put(feedMap, "title", channel.getChildText("title",ns));
-        put(feedMap, "link", channel.getChildText("link",ns));
-        put(feedMap, new String[] {"description","subtitle"},
+        put(feedMap, "title", channel.getChildText("title", ns));
+        put(feedMap, "link", channel.getChildText("link", ns));
+        put(feedMap, new String[] {"description", "subtitle"},
                 	 channel.getChildText("description",ns));
         
         Iterator<?> items = null;
         if (root.getName().equals("rss")) {                    
-            items = channel.getChildren("item",ns).iterator();  
+            items = channel.getChildren("item", ns).iterator();  
         } else {
-            items = root.getChildren("item",ns).iterator();  
+            items = root.getChildren("item", ns).iterator();  
         }
+        
         List<Map<String, Object>> itemList = new ArrayList<Map<String, Object>>();
         put(feedMap, new String[] {"entries", "items"}, itemList);
+        
         SimpleDateFormat rfc822_format = new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );  
         while (items.hasNext()) {                               
             Element item = (Element) items.next();
@@ -139,15 +145,15 @@ public class AnyFeedParser implements IFeedParser {
                 put(itemMap, "link", link.getText());
             } else if (guid != null                     
                     && "true".equals(guid.getAttributeValue("isPermaLink"))) {
-                put(itemMap, new String[] {"link","guid"}, guid.getText());
+                put(itemMap, new String[] {"link", "guid"}, guid.getText());
             }
             put(itemMap,"title", item.getChildText("title", ns));
             put(itemMap,"content", item.getChildText("encoded", contentNS)); 
-            put(itemMap, new String[] {"description","summary"},
+            put(itemMap, new String[] {"description", "summary"},
                     	 item.getChildText("description", ns));
             
             if (item.getChild("pubDate", ns) != null) {           
-                put(itemMap, new String[] {"pubDate","updated"},
+                put(itemMap, new String[] {"pubDate", "updated"},
                         	 rfc822_format.parse(item.getChildText("pubDate", ns)));
             } else if (item.getChild("date", dcNS) != null) {      
                 put(itemMap, new String[] {"pubDate","updated"},

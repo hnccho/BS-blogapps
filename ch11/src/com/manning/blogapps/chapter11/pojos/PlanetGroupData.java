@@ -71,6 +71,7 @@ public class PlanetGroupData implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+    
     /** 
      * @hibernate.bag lazy="false" inverse="true" cascade="delete" 
      * @hibernate.collection-key column="group_id"
@@ -83,6 +84,7 @@ public class PlanetGroupData implements Serializable {
     public void setGroupSubscriptionAssocs(List subscriptionAssocs) {
         this.subscriptionAssocs = subscriptionAssocs;
     }
+    
     /** 
      * @hibernate.property column="cat_restriction" non-null="false" unique="false"
      */
@@ -93,6 +95,7 @@ public class PlanetGroupData implements Serializable {
         this.categoryRestriction = categoryRestriction;
         catArray = null;
     }
+    
     /** 
      * @hibernate.property column="description" non-null="false" unique="false"
      */
@@ -102,6 +105,7 @@ public class PlanetGroupData implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
     /** 
      * @hibernate.property column="handle" non-null="false" unique="false"
      */
@@ -111,6 +115,7 @@ public class PlanetGroupData implements Serializable {
     public void setHandle(String handle) {
         this.handle = handle;
     }
+    
     /** 
      * @hibernate.property column="max_feed_entries" non-null="false" unique="false"
      */
@@ -120,6 +125,7 @@ public class PlanetGroupData implements Serializable {
     public void setMaxFeedEntries(int maxFeedEntries) {
         this.maxFeedEntries = maxFeedEntries;
     }
+    
     /** 
      * @hibernate.property column="max_page_entries" non-null="false" unique="false"
      */
@@ -129,6 +135,7 @@ public class PlanetGroupData implements Serializable {
     public void setMaxPageEntries(int maxPageEntries) {
         this.maxPageEntries = maxPageEntries;
     }
+    
     /** 
      * @hibernate.property column="title" non-null="false" unique="false"
      */
@@ -170,6 +177,7 @@ public class PlanetGroupData implements Serializable {
         }
         return catArray;
     }
+    
     /** no-op to please XDoclet generated form */
     private void setCategoryRestructionAsArray(String[] ignored) {
     }

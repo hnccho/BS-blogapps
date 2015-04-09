@@ -15,9 +15,11 @@ public class FeedPrinter {
 
     /** Print AnyFeedParser feed output to PrintWriter */
     public static void displayFeed(Map feed, PrintWriter pw) throws Exception {
-        pw.println("Newsfeed title:       " + feed.get("title"));
+
+    	pw.println("Newsfeed title:       " + feed.get("title"));
         pw.println("Newsfeed description: " + feed.get("description"));
         pw.println("Newsfeed link:        " + feed.get("link"));        
+
         List items = (List)feed.get("items");
         for (int i=0; i<items.size(); i++) {
             Map item = (Map)items.get(i);

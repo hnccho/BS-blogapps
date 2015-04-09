@@ -21,6 +21,7 @@ import com.sun.syndication.io.WireFeedOutput;
 public class GenerateFeed {
  
 	public static void main(String[] args) throws Exception {
+		
         if (args.length < 1) {
             System.out.println("USAGE: GenerateFeed <feed-type>");
             return;
@@ -57,7 +58,7 @@ public class GenerateFeed {
         content1.setValue("Content for test entry #1");
         entry1.setContents(Collections.singletonList(content1));
         
-        List entries = new ArrayList();                           
+        List<SyndEntry> entries = new ArrayList<SyndEntry>();                           
         entries.add(entry1);
         feed.setEntries(entries);
         

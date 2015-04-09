@@ -31,7 +31,7 @@ public class ParseFeedFunky {
         SyndFeedInput input = new SyndFeedInput();
         SyndFeed feed = input.build(new InputStreamReader(is));
         
-        Iterator entries = feed.getEntries().iterator();
+        Iterator<?> entries = feed.getEntries().iterator();
         while (entries.hasNext()) {
             SyndEntry entry = (SyndEntry)entries.next();
             

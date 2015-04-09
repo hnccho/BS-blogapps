@@ -36,26 +36,31 @@ public class AnyFeedParserCaching extends AnyFeedParser {
     }
 
 	public Map parseFeed(String feedFileName) throws Exception {
+		
         if (!feedFileName.startsWith("http://")) {
             return (parseFeed(new FileReader(feedFileName)));
         }
+        
         URL url = new URL(feedFileName);
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         CachedFeed cachedFeed = getCache(url);
         if (cachedFeed != null) {
             conn.setIfModifiedSince(cachedFeed.lastModified);
         }
+        
         if (conn.getResponseCode() != HttpURLConnection.HTTP_NOT_MODIFIED) {
             System.out.println("Fetching new copy of feed");
             String feedString = inputStreamToString(conn.getInputStream());
             putCache(url, feedString, conn.getLastModified());
             return parseFeed(new StringReader(feedString));
         }
+        
         System.out.println("Not fetching, parsing cached feed");
         return parseFeed(new StringReader(cachedFeed.feed));
     }
 
 	public static class CachedFeed implements Serializable {
+
 		private static final long serialVersionUID = 1L;
 		URL url;
         String feed;

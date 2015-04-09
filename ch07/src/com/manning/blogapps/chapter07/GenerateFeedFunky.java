@@ -23,6 +23,7 @@ public class GenerateFeedFunky {
             System.out.println("USAGE: GenerateRSS <feed-type>");
             return;
         }
+		
         Channel channel = new Channel();  
         channel.setFeedType(args[0]);
         channel.setLanguage("en-us");                
@@ -31,7 +32,7 @@ public class GenerateFeedFunky {
         channel.setLink("http://example.com/feeds/blog1");                                           
         channel.setPubDate(new Date()); 
                    
-        List items = new ArrayList();
+        List<Item> items = new ArrayList<Item>();
         
         Item item1 = new Item();
         item1.setTitle("Entry1");
@@ -44,7 +45,7 @@ public class GenerateFeedFunky {
         item1.setDescription(desc); 
         
         ContentModule cm = new ContentModuleImpl(); 
-        List encodeds = new ArrayList();
+        List<String> encodeds = new ArrayList<String>();
         encodeds.add("Content for test entry #1");
         cm.setEncodeds(encodeds);
         item1.getModules().add(cm);

@@ -14,6 +14,7 @@ public class ParseAnyFeed {
     }
 
 	public ParseAnyFeed(String[] args) throws Exception {
+		
         FileInputStream inputStream = new FileInputStream(args[0]);
         
 		IFeedParser parser = new AnyFeedParser();   
@@ -27,6 +28,7 @@ public class ParseAnyFeed {
 		   System.out.println("Content: "     + (String)itemMap.get("content"));        
 		   System.out.println("Date"          + itemMap.get("updated").toString());        
 		}
+		
     }
 	
 }

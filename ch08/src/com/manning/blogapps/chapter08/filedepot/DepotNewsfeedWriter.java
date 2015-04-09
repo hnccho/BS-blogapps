@@ -44,8 +44,8 @@ public class DepotNewsfeedWriter {
         selfLink.setRel("self");                             
         feed.setLinks(Collections.singletonList(selfLink));  
         
-        ArrayList entries = new ArrayList();            
-        Iterator files = depot.getFiles().iterator();   
+        ArrayList<SyndEntry> entries = new ArrayList<SyndEntry>();            
+        Iterator<?> files = depot.getFiles().iterator();   
         while (files.hasNext()) {                                   
             File file = (File) files.next();            
             
@@ -73,12 +73,14 @@ public class DepotNewsfeedWriter {
     }
     
     public void main(String[] args) throws Exception {    
-        if (args.length < 3)  {                           
+ 
+    	if (args.length < 3)  {                           
             System.out.println(                           
                 "USAGE: DepotNewsfeedWriter "             
               + "[depotDir] [depotUrl] [file] [format]");  
             return;                                       
         }
+    	
         String depotDir = args[0];                      
         Depot depot = new FileDepot(depotDir);               
         DepotNewsfeedWriter newsfeedWriter = new DepotNewsfeedWriter(depot);             

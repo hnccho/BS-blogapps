@@ -67,15 +67,14 @@ public abstract class PlanetManagerImpl {
             logger.warn("Planet cache directory not set, aborting refresh");
             return;
         }
-        FeedFetcherCache feedInfoCache =
-                new DiskFeedInfoCache(config.getCacheDir());
+        FeedFetcherCache feedInfoCache = new DiskFeedInfoCache(config.getCacheDir());
         
         if (config.getProxyHost()!=null && config.getProxyPort() > 0) {
             System.setProperty("proxySet", "true");
             System.setProperty("http.proxyHost", config.getProxyHost());
-            System.setProperty("http.proxyPort",
-                    Integer.toString(config.getProxyPort()));
+            System.setProperty("http.proxyPort", Integer.toString(config.getProxyPort()));
         }
+        
         /** a hack to set 15 sec timeouts for java.net.HttpURLConnection */
         System.setProperty("sun.net.client.defaultConnectTimeout", "15000");
         System.setProperty("sun.net.client.defaultReadTimeout", "15000");
@@ -150,8 +149,7 @@ public abstract class PlanetManagerImpl {
             feed = feedFetcher.retrieveFeed(feedUrl);
             SyndFeedInfo feedInfo = feedInfoCache.getFeedInfo(feedUrl);
             if (feedInfo.getLastModified() != null) {
-                long lastUpdatedLong =
-                        ((Long)feedInfo.getLastModified()).longValue();
+                long lastUpdatedLong = ((Long)feedInfo.getLastModified()).longValue();
                 if (lastUpdatedLong != 0) {
                     lastUpdated = new Date(lastUpdatedLong);
                 }
@@ -202,11 +200,9 @@ public abstract class PlanetManagerImpl {
         while (entries.hasNext()) {
             try {
                 SyndEntry romeEntry = (SyndEntry) entries.next();
-                PlanetEntryData entry =
-                        new PlanetEntryData(feed, romeEntry, sub);
+                PlanetEntryData entry = new PlanetEntryData(feed, romeEntry, sub);
                 if (entry.getPublished() == null) {
-                    logger.debug(
-                            "No published date, assigning fake date for "+feedUrl);
+                    logger.debug("No published date, assigning fake date for "+feedUrl);
                     entry.setPublished(cal.getTime());
                 }
                 if (entry.getPermalink() == null) {

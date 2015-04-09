@@ -24,6 +24,7 @@ public class ParseAtom {
     }
     
     public ParseAtom(String[] args) throws Exception {
+    	
         FileInputStream inputStream = new FileInputStream(args[0]);
         
         SAXBuilder builder = new SAXBuilder();

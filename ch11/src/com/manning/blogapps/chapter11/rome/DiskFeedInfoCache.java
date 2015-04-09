@@ -33,8 +33,8 @@ import com.sun.syndication.fetcher.impl.SyndFeedInfo;
 /**
  * @author David M. Johnson
  */
-public class DiskFeedInfoCache implements FeedFetcherCache
-{
+public class DiskFeedInfoCache implements FeedFetcherCache {
+	
     private static Log logger = 
         LogFactory.getFactory().getInstance(DiskFeedInfoCache.class);
     
@@ -43,28 +43,22 @@ public class DiskFeedInfoCache implements FeedFetcherCache
     public DiskFeedInfoCache(String cachePath) {
         this.cachePath = cachePath;
     }
+    
     public SyndFeedInfo getFeedInfo(URL url) {
         SyndFeedInfo info = null;
         String fileName = cachePath + File.separator + "feed_" + url.hashCode();
         FileInputStream fis;
-        try
-        {
+        try {
             fis = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
             info = (SyndFeedInfo)ois.readObject();
             fis.close();
-        }
-        catch (FileNotFoundException fnfe)
-        {
+        } catch (FileNotFoundException fnfe) {
             logger.debug("Cache miss for " + url.toString());
-        }
-        catch (ClassNotFoundException cnfe)
-        {
+        } catch (ClassNotFoundException cnfe) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to read from cache", cnfe);
-        }
-        catch (IOException fnfe)
-        {
+        } catch (IOException fnfe) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to read from cache", fnfe);
         }
@@ -76,16 +70,13 @@ public class DiskFeedInfoCache implements FeedFetcherCache
     	
         String fileName = cachePath + File.separator + "feed_" + url.hashCode();
         FileOutputStream fos;
-        try
-        {
+        try {
             fos = new FileOutputStream(fileName);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(feedInfo);
             fos.flush();
             fos.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to write to cache", e);
         }

@@ -17,6 +17,7 @@ public class ParseRSS20 {
     }
 	
     public ParseRSS20(String[] args) throws Exception {
+    	
         FileInputStream inputStream = new FileInputStream(args[0]);
         
 		SAXBuilder builder = new SAXBuilder();          

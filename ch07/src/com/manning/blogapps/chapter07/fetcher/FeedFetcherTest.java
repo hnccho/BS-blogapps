@@ -14,7 +14,8 @@ import com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 public class FeedFetcherTest implements FetcherListener {      
 
 	public static void main(String[] args) throws Exception {
-        if (args.length < 2) {                                 
+ 
+		if (args.length < 2) {                                 
             System.out.println(
                 "USAGE: FeedFetcherTest [disk|memory] <feed-url>");
             return;
@@ -23,7 +24,8 @@ public class FeedFetcherTest implements FetcherListener {
     }
     
 	public FeedFetcherTest(String type, String url) throws Exception {
-        FeedFetcherCache feedInfoCache = null;
+
+		FeedFetcherCache feedInfoCache = null;
         if ("disk".equals(type)) {                             
             File cache = new File("./cache");
             if (!cache.exists()) cache.mkdirs();

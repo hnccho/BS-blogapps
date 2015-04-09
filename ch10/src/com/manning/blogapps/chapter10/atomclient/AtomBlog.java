@@ -86,7 +86,9 @@ public class AtomBlog implements Blog {
                 // first entry collection is primary entry collection 
                 entriesCollection = new AtomBlogCollection(col);
             }
-            else if (col.getAccept() != null && !col.getAccept().equals("entry") && resourcesCollection == null) {
+            else if (col.getAccept() != null 
+            		&& !col.getAccept().equals("entry") 
+            		&& resourcesCollection == null) {
                 // first non-entry collection is primary resource collection
                 resourcesCollection = new AtomBlogCollection(col);
             } 
