@@ -56,7 +56,8 @@ public class AnyFeedParserCaching extends AnyFeedParser {
     }
 
 	public static class CachedFeed implements Serializable {
-        URL url;
+		private static final long serialVersionUID = 1L;
+		URL url;
         String feed;
         long lastModified;
         public CachedFeed(URL url, String feed, long lastModified) {

@@ -16,7 +16,6 @@
  */
 package com.manning.blogapps.chapter10.atomclient;
 
-import com.manning.blogapps.chapter10.rome.*;
 import org.jdom.Element;
 import org.jdom.Namespace;
 

@@ -1,8 +1,6 @@
 package com.manning.blogapps.chapter16;
 import org.apache.tools.ant.*;
 import com.manning.blogapps.chapter10.blogclient.*;
-import com.manning.blogapps.chapter10.metaweblogclient.MetaWeblogConnection;
-import com.manning.blogapps.chapter10.atomclient.AtomBlogConnection;
 import java.util.*;
 
 public class PostBlogEntryTask extends BaseBlogTask {  //|#1

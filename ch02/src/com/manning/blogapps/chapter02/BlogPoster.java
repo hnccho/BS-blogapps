@@ -30,12 +30,12 @@ public class BlogPoster {
         String blogid = config.getProperty("blogid");
         String target = config.getProperty("target");
         
-        Hashtable post = new Hashtable();
+        Hashtable<String, Object> post = new Hashtable<String, Object>();
         post.put("dateCreated", new Date());
         if (title != null) post.put("title", title);
         post.put("description", description);
             
-        Vector params = new Vector();
+        Vector<Serializable> params = new Vector<Serializable>();
         params.addElement(blogid);
         params.addElement(username);
         params.addElement(password);
@@ -46,4 +46,5 @@ public class BlogPoster {
         String result = (String)xmlrpc.execute("metaWeblog.newPost", params);
         System.out.println("newPost result: " + result);
     }
+    
 }

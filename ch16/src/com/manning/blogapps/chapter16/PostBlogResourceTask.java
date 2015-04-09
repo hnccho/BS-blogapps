@@ -2,8 +2,6 @@ package com.manning.blogapps.chapter16;
 import java.io.*;
 import org.apache.tools.ant.*;
 import com.manning.blogapps.chapter10.blogclient.*;
-import com.manning.blogapps.chapter10.metaweblogclient.MetaWeblogConnection;
-import com.manning.blogapps.chapter10.atomclient.AtomBlogConnection;
 
 public class PostBlogResourceTask extends BaseBlogTask {  //|#1
     private String filename = null;     //|#2

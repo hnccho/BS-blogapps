@@ -15,7 +15,6 @@
  */
 package com.manning.blogapps.chapter10.rome;
 
-import com.sun.syndication.io.impl.Atom10Parser;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;

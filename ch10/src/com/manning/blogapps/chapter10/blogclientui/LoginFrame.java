@@ -15,7 +15,6 @@
  */
 package com.manning.blogapps.chapter10.blogclientui;
 import java.util.*;
-import java.util.logging.LogManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.*;

@@ -1,7 +1,6 @@
 package com.manning.blogapps.chapter16;
 import org.apache.tools.ant.*;
 import com.manning.blogapps.chapter10.blogclient.*;
-import java.util.*;
 
 public abstract class BaseBlogTask extends Task {   //|#1
     protected String apitype = "metaweblog";  //|#2

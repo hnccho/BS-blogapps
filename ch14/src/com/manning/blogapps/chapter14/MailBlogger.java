@@ -1,7 +1,6 @@
 package com.manning.blogapps.chapter14;
 
 import java.io.FileInputStream;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;

@@ -20,10 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.io.InputStream;
 
 import com.manning.blogapps.chapter10.blogclient.*;
-import com.manning.blogapps.chapter10.rome.*;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
 
