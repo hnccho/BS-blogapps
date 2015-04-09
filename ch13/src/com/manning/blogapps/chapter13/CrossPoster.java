@@ -1,6 +1,7 @@
 package com.manning.blogapps.chapter13;
 
 import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,11 +18,10 @@ import org.jdom.xpath.XPath;
 
 import com.manning.blogapps.chapter05.AnyFeedParser;
 import com.manning.blogapps.chapter05.IFeedParser;
-import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 import com.manning.blogapps.chapter10.blogclient.Blog;
 import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
-import java.io.InputStreamReader;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 /* 
 <?xml version="1.0" encoding="utf-8" ?> 
@@ -39,6 +39,7 @@ import java.io.InputStreamReader;
 </cross-poster>
 */
 public class CrossPoster {
+	
     static String metaweblog_url = null;
     static String username = null;
     static String password = null;
@@ -142,5 +143,6 @@ public class CrossPoster {
         Element e = (Element)xpath.selectSingleNode(elem);
         return e!=null ? e.getText() : null;
     }
+    
 }
 

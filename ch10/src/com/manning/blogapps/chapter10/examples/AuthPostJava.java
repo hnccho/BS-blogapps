@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.examples;
-import java.io.*;
-import java.net.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
 import org.apache.commons.codec.binary.Base64;
 
 /** 
@@ -23,6 +30,7 @@ import org.apache.commons.codec.binary.Base64;
  * Sets content-type is application/atom+xml unless file ends with .gif or .jpg.
  */
 public class AuthPostJava {
+	
     public static void main(String[] args) throws Exception {
         if (args.length < 4) {  
             System.out.println(
@@ -47,10 +55,8 @@ public class AuthPostJava {
         else if (filepath.endsWith(".jpg")) contentType = "image/jpg";
         conn.setRequestProperty("Content-type", contentType); 
         
-        BufferedInputStream filein = 
-            new BufferedInputStream(new FileInputStream(upload));
-        BufferedOutputStream out = 
-            new BufferedOutputStream(conn.getOutputStream());
+        BufferedInputStream filein = new BufferedInputStream(new FileInputStream(upload));
+        BufferedOutputStream out = new BufferedOutputStream(conn.getOutputStream());
         byte buffer[] = new byte[8192];
         for (int count = 0; count != -1;) {
             count = filein.read(buffer, 0, 8192);
@@ -66,5 +72,6 @@ public class AuthPostJava {
         while ((s = in.readLine()) != null) {
             System.out.println(s);
         }
-    }    
+    }  
+    
 }

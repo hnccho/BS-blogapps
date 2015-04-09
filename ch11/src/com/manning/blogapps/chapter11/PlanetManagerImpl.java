@@ -15,10 +15,6 @@
  */
 package com.manning.blogapps.chapter11;
 
-import com.manning.blogapps.chapter11.pojos.PlanetConfigData;
-import com.manning.blogapps.chapter11.pojos.PlanetEntryData;
-import com.manning.blogapps.chapter11.pojos.PlanetSubscriptionData;
-import com.manning.blogapps.chapter11.rome.DiskFeedInfoCache;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Calendar;
@@ -31,6 +27,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.manning.blogapps.chapter11.pojos.PlanetConfigData;
+import com.manning.blogapps.chapter11.pojos.PlanetEntryData;
+import com.manning.blogapps.chapter11.pojos.PlanetSubscriptionData;
+import com.manning.blogapps.chapter11.rome.DiskFeedInfoCache;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.fetcher.FeedFetcher;
@@ -43,6 +43,7 @@ import com.sun.syndication.fetcher.impl.SyndFeedInfo;
  * @author Dave Johnson
  */
 public abstract class PlanetManagerImpl {
+	
     protected String localURL = null;
     
     private static Log logger =
@@ -221,4 +222,5 @@ public abstract class PlanetManagerImpl {
         }
         return newEntries;
     }
+    
 }

@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter07.fetcher;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+
 import com.sun.syndication.fetcher.impl.FeedFetcherCache;
 import com.sun.syndication.fetcher.impl.SyndFeedInfo;
 
@@ -42,7 +49,7 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
             throw new RuntimeException("Attempting to read from cache", cnfe);
         } catch (IOException ioe) {
             throw new RuntimeException("Attempting to read from cache", ioe);
-        }
+        } 
         return info;
     }
     

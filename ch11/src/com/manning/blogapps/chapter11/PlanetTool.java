@@ -15,14 +15,9 @@
  */
 package com.manning.blogapps.chapter11;
 
-import com.manning.blogapps.chapter11.pojos.PlanetConfigData;
-import com.manning.blogapps.chapter11.pojos.PlanetEntryData;
-import com.manning.blogapps.chapter11.pojos.PlanetGroupData;
-import com.manning.blogapps.chapter11.pojos.PlanetSubscriptionData;
-import com.manning.blogapps.chapter11.utils.Utilities;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -42,7 +37,6 @@ import java.util.Date;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -61,7 +55,11 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
 
-
+import com.manning.blogapps.chapter11.pojos.PlanetConfigData;
+import com.manning.blogapps.chapter11.pojos.PlanetEntryData;
+import com.manning.blogapps.chapter11.pojos.PlanetGroupData;
+import com.manning.blogapps.chapter11.pojos.PlanetSubscriptionData;
+import com.manning.blogapps.chapter11.utils.Utilities;
 
 /**
  * Utility that aggregates multiple newsfeeds using Rome Fetcher and calls
@@ -71,7 +69,8 @@ import org.jdom.xpath.XPath;
  * @author David M Johnson
  */
 public class PlanetTool extends PlanetManagerImpl {
-    private static Log logger =
+ 
+	private static Log logger =
             LogFactory.getFactory().getInstance(PlanetTool.class);
     
     protected PlanetConfigData config = null;
@@ -402,6 +401,7 @@ public class PlanetTool extends PlanetManagerImpl {
      */
     public int getSubscriptionCount() throws Exception {
         return this.subsByURL.size();
-    };
+    }
+    
 }
 

@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.examples;
-import java.io.*;
-import org.apache.commons.codec.binary.Base64;    //|#1
-import org.apache.commons.httpclient.HttpClient;    //|#2
+import java.io.File;
+import java.io.FileInputStream;
+
+import org.apache.commons.codec.binary.Base64;   
+import org.apache.commons.httpclient.HttpClient;    
 import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 
@@ -25,8 +27,9 @@ import org.apache.commons.httpclient.methods.PostMethod;
  * Sets content-type is application/atom+xml unless file ends with .gif or .jpg.
  */
 public class AuthPost {
-    public static void main(String[] args) throws Exception {
-        if (args.length < 4) {    //|#3
+ 
+	public static void main(String[] args) throws Exception {
+        if (args.length < 4) {    
             System.out.println(
                 "USAGE: authpost <username> <password> <filepath> <url>");
             System.exit(-1);
@@ -35,21 +38,22 @@ public class AuthPost {
         String filepath = args[2];
         String url = args[3];
         
-        HttpClient httpClient = new HttpClient();    //|#4
-        EntityEnclosingMethod method = new PostMethod(url);    //|#5
-        method.setRequestHeader("Authorization", "Basic "    //|#6
+        HttpClient httpClient = new HttpClient();    
+        EntityEnclosingMethod method = new PostMethod(url);   
+        method.setRequestHeader("Authorization", "Basic "    
             + new String(Base64.encodeBase64(credentials.getBytes())));
         
-        File upload = new File(filepath);    //|#7
-        method.setRequestHeader("Title", upload.getName());   //|#8
-        method.setRequestBody(new FileInputStream(upload));    //|#9
+        File upload = new File(filepath);   
+        method.setRequestHeader("Title", upload.getName());   
+        method.setRequestBody(new FileInputStream(upload));    
 
-        String contentType = "application/atom+xml; charset=utf8";     //|#10
-        if (filepath.endsWith(".gif")) contentType = "image/gif";      //|#10
-        else if (filepath.endsWith(".jpg")) contentType = "image/jpg"; //|#10
-        method.setRequestHeader("Content-type", contentType);          //|#10          
+        String contentType = "application/atom+xml; charset=utf8";    
+        if (filepath.endsWith(".gif")) contentType = "image/gif";     
+        else if (filepath.endsWith(".jpg")) contentType = "image/jpg"; 
+        method.setRequestHeader("Content-type", contentType);            
         
-        httpClient.executeMethod(method);                      //|#11      
-        System.out.println(method.getResponseBodyAsString());  //|#11
-    }    
+        httpClient.executeMethod(method);                      
+        System.out.println(method.getResponseBodyAsString());  
+    }  
+	
 }

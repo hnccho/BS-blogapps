@@ -15,10 +15,15 @@
  *
  */
 package com.manning.blogapps.chapter07.pubcontrol;
-import org.jdom.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.jdom.Element;
+import org.jdom.Namespace;
+
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-import java.util.*;
 
 public class PubControlModuleGenerator implements ModuleGenerator {
 
@@ -26,13 +31,13 @@ public class PubControlModuleGenerator implements ModuleGenerator {
         Namespace.getNamespace("app", PubControlModule.URI);
     private static final Set NAMESPACES;
  
-    static {                                            //|#1
+    static {                                            
         Set nss = new HashSet();
         nss.add(NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
   
-    public Set getNamespaces() {                        //|#2
+    public Set getNamespaces() {                        
         return NAMESPACES;
     }
  
@@ -40,14 +45,14 @@ public class PubControlModuleGenerator implements ModuleGenerator {
         return PubControlModule.URI;
     }
 
-    public void generate(Module module, Element element) {    //|#3
+    public void generate(Module module, Element element) {    
         PubControlModule m = (PubControlModule)module;
         String draft = m.getDraft() ? "yes" : "no";
-        Element controlElem = new Element("control", NS); //|#5
-        Element draftElem = new Element("draft", NS);     //|#6
+        Element controlElem = new Element("control", NS); 
+        Element draftElem = new Element("draft", NS);     
         draftElem.addContent(draft);
         controlElem.addContent(draftElem);
-        element.addContent(controlElem);                  //|#7
+        element.addContent(controlElem);                  
     }
     
 }

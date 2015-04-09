@@ -39,12 +39,11 @@ public class DiskFeedInfoCache implements FeedFetcherCache
         LogFactory.getFactory().getInstance(DiskFeedInfoCache.class);
     
     protected String cachePath = null;
-    public DiskFeedInfoCache(String cachePath)
-    {
+    
+    public DiskFeedInfoCache(String cachePath) {
         this.cachePath = cachePath;
     }
-    public SyndFeedInfo getFeedInfo(URL url)
-    {
+    public SyndFeedInfo getFeedInfo(URL url) {
         SyndFeedInfo info = null;
         String fileName = cachePath + File.separator + "feed_" + url.hashCode();
         FileInputStream fis;
@@ -73,8 +72,8 @@ public class DiskFeedInfoCache implements FeedFetcherCache
         return info;
     }
 
-    public void setFeedInfo(URL url, SyndFeedInfo feedInfo)
-    {
+    public void setFeedInfo(URL url, SyndFeedInfo feedInfo) {
+    	
         String fileName = cachePath + File.separator + "feed_" + url.hashCode();
         FileOutputStream fos;
         try
@@ -91,4 +90,5 @@ public class DiskFeedInfoCache implements FeedFetcherCache
             throw new RuntimeException("Attempting to write to cache", e);
         }
     }
+    
 }

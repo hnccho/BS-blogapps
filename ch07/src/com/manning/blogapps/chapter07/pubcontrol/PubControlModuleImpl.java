@@ -19,17 +19,17 @@ import com.sun.syndication.feed.module.ModuleImpl;
 
 public class PubControlModuleImpl extends ModuleImpl implements PubControlModule {
 
-	private boolean _draft = false;        //|#1
+	private boolean _draft = false;        
 
 	public PubControlModuleImpl() {
         super(PubControlModule.class, PubControlModule.URI);
     }
 
-	public boolean getDraft() {            //|#2
+	public boolean getDraft() {            
         return _draft;
     }
 
-    public void setDraft(boolean draft) {  //|#3
+    public void setDraft(boolean draft) {  
         _draft = draft;
     }
 

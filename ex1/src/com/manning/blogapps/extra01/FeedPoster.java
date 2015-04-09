@@ -4,13 +4,13 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.text.SimpleDateFormat;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -19,9 +19,13 @@ import org.jdom.xpath.XPath;
 
 import com.manning.blogapps.chapter05.AnyFeedParser;
 import com.manning.blogapps.chapter05.IFeedParser;
-import com.manning.blogapps.chapter10.blogclient.*;
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
+import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 public class FeedPoster {
+	
     String title = null;
     int days = -1;
     String url = null;
@@ -43,6 +47,7 @@ public class FeedPoster {
         feedPoster.initFromXml(args[0]);
         feedPoster.run();
     }
+    
     public void run() throws Exception {
         System.out.println("FeedPoster for Java");
         
@@ -139,8 +144,10 @@ public class FeedPoster {
         Element e = (Element)xpath.selectSingleNode(elem);
         return e!=null ? e.getText() : null;
     }
+    
     private static int getInt(Element elem, String path) throws Exception {
         return Integer.parseInt(getString(elem, path));
     }
+    
 }
 

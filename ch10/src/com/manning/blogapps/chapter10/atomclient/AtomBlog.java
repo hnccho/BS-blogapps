@@ -15,8 +15,6 @@
  */
 package com.manning.blogapps.chapter10.atomclient;
 
-import com.manning.blogapps.chapter10.blogclient.*;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,6 +24,9 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.TreeMap;
 
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
@@ -38,13 +39,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
+
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+import com.manning.blogapps.chapter10.blogclient.BlogResource;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.io.WireFeedInput;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.TreeMap;
 
 /**
  * Atom blog implementation, wraps an Atom workspace.

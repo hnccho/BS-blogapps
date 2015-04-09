@@ -21,9 +21,9 @@ import java.io.Serializable;
  * @hibernate.class lazy="false" table="rag_group_subscription"
  * @author Dave Johnson
  */
-public class PlanetGroupSubscriptionAssoc implements Serializable
-{
-    /** Database ID */
+public class PlanetGroupSubscriptionAssoc implements Serializable {
+
+	/** Database ID */
     private String id = null;
     
     private PlanetGroupData group = null;
@@ -34,37 +34,31 @@ public class PlanetGroupSubscriptionAssoc implements Serializable
      * @hibernate.id column="id" 
      *     generator-class="uuid.hex" unsaved-value="null"
      */
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
-    public void setId(String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
 
     /** 
      * @hibernate.many-to-one column="group_id" cascade="none" not-null="false"
      */
-    public PlanetGroupData getGroup()
-    {
+    public PlanetGroupData getGroup() {
         return group;
     }
-    public void setGroup(PlanetGroupData group)
-    {
+    public void setGroup(PlanetGroupData group) {
         this.group = group;
     }
     
     /** 
      * @hibernate.many-to-one column="subscription_id" cascade="none" not-null="false"
      */
-    public PlanetSubscriptionData getSubscription()
-    {
+    public PlanetSubscriptionData getSubscription() {
         return subscription;
     }    
-    public void setSubscription(PlanetSubscriptionData subscription)
-    {
+    public void setSubscription(PlanetSubscriptionData subscription) {
         this.subscription = subscription;
     }
 

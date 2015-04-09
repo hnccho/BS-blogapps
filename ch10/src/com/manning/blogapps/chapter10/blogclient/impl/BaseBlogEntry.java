@@ -15,11 +15,13 @@
  */
 package com.manning.blogapps.chapter10.blogclient.impl;
 
-import com.manning.blogapps.chapter10.blogclient.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 /** 
  * Base implementation of a blog entry.

@@ -36,7 +36,8 @@ import com.manning.blogapps.chapter10.atomclient.*;
  * @author Dave Johnson
  */
 public class BlogClientTest extends TestCase {    
-    String ENDPOINT_URL = "http://localhost:8080/roller/app";
+
+	String ENDPOINT_URL = "http://localhost:8080/roller/app";
     String USERNAME     = "admin";    
     String PASSWORD     = "admin";     
     String TESTDATA_DIR     = "/Users/dave/src/blogapps-oss/examples/java/ch10/testdata/";
@@ -292,4 +293,5 @@ public class BlogClientTest extends TestCase {
             throw new IOException("Closing file streams, " + ex.getMessage());
         }
     }
+    
 }

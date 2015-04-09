@@ -24,4 +24,5 @@ public interface FileCaster {
     /** Remove a FileCast from the collection */
     public void removeFileCast(String filename) 
         throws Exception;
+    
 }

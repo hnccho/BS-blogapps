@@ -26,9 +26,9 @@ import java.util.List;
  * @ejb:bean name="PlanetSubscriptionData"
  * @hibernate.class lazy="false" table="rag_subscription"
  */
-public class PlanetSubscriptionData implements Serializable, Comparable
-{
-    /** Database ID */
+public class PlanetSubscriptionData implements Serializable, Comparable {
+ 
+	/** Database ID */
     protected String id;
     
     /** Title of the blog or website */
@@ -65,12 +65,10 @@ public class PlanetSubscriptionData implements Serializable, Comparable
      * @hibernate.collection-one-to-many 
      *    class="org.roller.pojos.PlanetGroupSubscriptionAssoc"
      */
-    public List getGroupSubscriptionAssocs()
-    {
+    public List getGroupSubscriptionAssocs() {
         return groupAssocs;
     }
-    public void setGroupSubscriptionAssocs(List groupAssocs)
-    {
+    public void setGroupSubscriptionAssocs(List groupAssocs) {
         this.groupAssocs = groupAssocs;
     }
 
@@ -78,12 +76,10 @@ public class PlanetSubscriptionData implements Serializable, Comparable
      * @hibernate.id column="id" 
      *     generator-class="uuid.hex" unsaved-value="null"
      */
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
-    public void setId(String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
     /** 
@@ -92,112 +88,93 @@ public class PlanetSubscriptionData implements Serializable, Comparable
      * @hibernate.collection-one-to-many 
      *    class="org.roller.pojos.PlanetEntryData"
      */
-    public List getEntries()
-    {
+    public List getEntries() {
         return entries;
     }
-    public void setEntries(List entries)
-    {
+    public void setEntries(List entries) {
         this.entries = entries;
     }
     /** 
      * @hibernate.property column="feed_url" non-null="true" unique="false"
      */
-    public String getFeedUrl()
-    {
+    public String getFeedUrl() {
         return feedUrl;
     }
-    public void setFeedUrl(String feedUrl)
-    {
+    public void setFeedUrl(String feedUrl) {
         this.feedUrl = feedUrl;
     }
     /** 
      * @hibernate.property column="last_updated" non-null="false" unique="false"
      */
-    public Date getLastUpdated()
-    {
+    public Date getLastUpdated() {
         return lastUpdated;
     }
-    public void setLastUpdated(Date lastUpdated)
-    {
+    public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
     /** 
      * @hibernate.property column="site_url" non-null="false" unique="false"
      */
-    public String getSiteUrl()
-    {
+    public String getSiteUrl() {
         return siteUrl;
     }
-    public void setSiteUrl(String siteUrl)
-    {
+    public void setSiteUrl(String siteUrl) {
         this.siteUrl = siteUrl;
     }
     /** 
      * @hibernate.property column="title" non-null="false" unique="false"
      */
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
     /** 
      * @hibernate.property column="author" non-null="false" unique="false"
      */
-    public String getAuthor()
-    {
+    public String getAuthor() {
         return author;
     }
-    public void setAuthor(String author)
-    {
+    public void setAuthor(String author) {
         this.author = author;
     }
     /** 
      * @hibernate.property column="inbound_links" non-null="false" unique="false"
      */
-    public int getInboundlinks()
-    {
+    public int getInboundlinks() {
         return inboundlinks;
     }
-    public void setInboundlinks(int inboundlinks)
-    {
+    public void setInboundlinks(int inboundlinks) {
         this.inboundlinks = inboundlinks;
     }
     /** 
      * @hibernate.property column="inbound_blogs" non-null="false" unique="false"
      */
-    public int getInboundblogs()
-    {
+    public int getInboundblogs() {
         return inboundblogs;
     }
-    public void setInboundblogs(int inboundblogs)
-    {
+    public void setInboundblogs(int inboundblogs) {
         this.inboundblogs = inboundblogs;
     }
 
     //-------------------------------------------------------------- implementation
    
-    public int compareTo(Object o)
-    {
+    public int compareTo(Object o) {
         PlanetSubscriptionData other = (PlanetSubscriptionData)o;
         return getFeedUrl().compareTo(other.getFeedUrl());
     }
 
-    public void addEntry(PlanetEntryData entry)
-    {
+    public void addEntry(PlanetEntryData entry) {
         entries.add(entry);
     }
     
-    public void addEntries(Collection newEntries)
-    {
+    public void addEntries(Collection newEntries) {
         entries.addAll(newEntries);
     }
     
-    public void purgeEntries()
-    {
+    public void purgeEntries() {
         entries.clear();
     }
+    
 }

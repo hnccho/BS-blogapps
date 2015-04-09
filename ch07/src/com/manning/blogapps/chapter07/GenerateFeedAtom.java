@@ -1,5 +1,11 @@
 package com.manning.blogapps.chapter07;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
 import com.manning.blogapps.chapter07.pubcontrol.PubControlModule;
 import com.manning.blogapps.chapter07.pubcontrol.PubControlModuleImpl;
 import com.sun.syndication.feed.atom.Content;
@@ -8,11 +14,6 @@ import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.atom.Person;
 import com.sun.syndication.io.WireFeedOutput;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Simple example that shows how to generate a feed.

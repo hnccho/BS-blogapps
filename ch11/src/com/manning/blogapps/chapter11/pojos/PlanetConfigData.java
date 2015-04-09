@@ -22,8 +22,8 @@ import java.io.Serializable;
  * @hibernate.class lazy="false" table="rag_config"
  * @author Dave Johnson
  */
-public class PlanetConfigData implements Serializable
-{
+public class PlanetConfigData implements Serializable {
+	
     /** Database ID */
     protected String id;
     
@@ -66,162 +66,135 @@ public class PlanetConfigData implements Serializable
     /** Location for caching newsfeed data */
     protected String cacheDir = "";
     
-    
     //----------------------------------------------------------- persistent fields
     /** 
      * @hibernate.id column="id" 
      *     generator-class="uuid.hex" unsaved-value="null"
      */
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
-    public void setId(String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
 
     /** 
      * @hibernate.many-to-one column="default_group_id" cascade="all" not-null="false"
      */
-    public PlanetGroupData getDefaultGroup()
-    {
+    public PlanetGroupData getDefaultGroup() {
         return defaultGroup;
     }
-    public void setDefaultGroup(PlanetGroupData group)
-    {
+    public void setDefaultGroup(PlanetGroupData group) {
         this.defaultGroup = group;
     }
 
     /** 
      * @hibernate.property column="group_page" non-null="false" unique="false"
      */
-    public String getGroupPage()
-    {
+    public String getGroupPage() {
         return groupPage;
     }    
-    public void setGroupPage(String groupPage)
-    {
+    public void setGroupPage(String groupPage) {
         this.groupPage = groupPage;
     }
     
     /** 
      * @hibernate.property column="main_page" non-null="false" unique="false"
      */
-    public String getMainPage()
-    {
+    public String getMainPage() {
         return mainPage;
     }
-    public void setMainPage(String mainPage)
-    {
+    public void setMainPage(String mainPage) {
         this.mainPage = mainPage;
     }
     
     /** 
      * @hibernate.property column="proxy_host" non-null="false" unique="false"
      */
-    public String getProxyHost()
-    {
+    public String getProxyHost() {
         return proxyHost;
     }
-    public void setProxyHost(String proxyHost)
-    {
+    public void setProxyHost(String proxyHost) {
         this.proxyHost = proxyHost;
     }
     
     /** 
      * @hibernate.property column="proxy_port" non-null="false" unique="false"
      */
-    public int getProxyPort()
-    {
+    public int getProxyPort() {
         return proxyPort;
     }
-    public void setProxyPort(int proxyPort)
-    {
+    public void setProxyPort(int proxyPort) {
         this.proxyPort = proxyPort;
     }
 
     /** 
      * @hibernate.property column="site_url" non-null="false" unique="false"
      */
-    public String getSiteUrl()
-    {
+    public String getSiteUrl() {
         return siteUrl;
     }
-    public void setSiteUrl(String siteUrl)
-    {
+    public void setSiteUrl(String siteUrl) {
         this.siteUrl = siteUrl;
     }
     
     /** 
      * @hibernate.property column="admin_email" non-null="true" unique="false"
      */
-    public String getAdminEmail()
-    {
+    public String getAdminEmail() {
         return adminEmail;
     }
-    public void setAdminEmail(String adminEmail)
-    {
+    public void setAdminEmail(String adminEmail) {
         this.adminEmail = adminEmail;
     }
     
     /** 
      * @hibernate.property column="admin_name" non-null="false" unique="false"
      */
-    public String getAdminName()
-    {
+    public String getAdminName() {
         return adminName;
     }
-    public void setAdminName(String adminName)
-    {
+    public void setAdminName(String adminName) {
         this.adminName = adminName;
     }
 
     /** 
      * @hibernate.property column="output_dir" non-null="false" unique="false"
      */
-    public String getOutputDir()
-    {
+    public String getOutputDir() {
         return outputDir;
     }
-    public void setOutputDir(String outputDir)
-    {
+    public void setOutputDir(String outputDir) {
         this.outputDir = outputDir;
     }
     
     /** 
      * @hibernate.property column="template_dir" non-null="false" unique="false"
      */
-    public String getTemplateDir()
-    {
+    public String getTemplateDir() {
         return templateDir;
     }
-    public void setTemplateDir(String templateDir)
-    {
+    public void setTemplateDir(String templateDir) {
         this.templateDir = templateDir;
     }
 
     /** 
      * @hibernate.property column="description" non-null="false" unique="false"
      */
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
     /** 
      * @hibernate.property column="title" non-null="true" unique="false"
      */
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -231,12 +204,10 @@ public class PlanetConfigData implements Serializable
      *
      * @hibernate.property column="cache_dir" non-null="true" unique="false"
      */
-    public String getCacheDir()
-    {
+    public String getCacheDir() {
         return cacheDir;
     }
-    public void setCacheDir(String dir)
-    {
+    public void setCacheDir(String dir) {
         if (dir != null) cacheDir = dir;
     }
 

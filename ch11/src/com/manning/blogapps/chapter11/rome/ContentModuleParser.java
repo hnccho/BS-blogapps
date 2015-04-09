@@ -31,6 +31,7 @@ public class ContentModuleParser implements ModuleParser {
     public Namespace getContentNamespace() {
         return Namespace.getNamespace(ContentModule.URI);
     }
+    
     public Module parse(Element dcRoot) {
         boolean foundSomething = false;
         ContentModule fm = new ContentModuleImpl();
@@ -42,5 +43,6 @@ public class ContentModuleParser implements ModuleParser {
         }
         return (foundSomething) ? fm : null;
     }
+    
 }
 

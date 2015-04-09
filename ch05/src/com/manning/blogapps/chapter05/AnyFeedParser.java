@@ -25,12 +25,23 @@
  * <p>Doesn't handle: author, creator, categories or feed-level pubDates</p>
  */
 package com.manning.blogapps.chapter05;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import org.jdom.*;
+import org.jdom.Attribute;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.Namespace;
+import org.jdom.Parent;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 
@@ -73,17 +84,17 @@ public class AnyFeedParser implements IFeedParser {
             Element item = (Element) items.next();
             Map<String, Object> itemMap = new HashMap<String, Object>();
             itemList.add(itemMap);
-            put(itemMap, new String[] {"id","guid"},               
-                    item.getChildText("id", ns));
+            put(itemMap, new String[] {"id","guid"}, 
+            			 item.getChildText("id", ns));
             put(itemMap, "title", parseAtomContent("title", item, ns));
-            put(itemMap, new String[] {"summary", "description"},    
-                    parseAtomContent("summary", item, ns));
-            put(itemMap, "link",    parseAtomLink(baseURI, item, ns));  
+            put(itemMap, new String[] {"summary", "description"}, 
+            			 parseAtomContent("summary", item, ns));
+            put(itemMap, "link", parseAtomLink(baseURI, item, ns));  
             put(itemMap, "content", parseAtomContent("content", item, ns));
             String dt = item.getChildText("updated", ns);
             if (dt != null) {
                 put(itemMap, new String[] {"updated","pubDate"},     
-                        ISO8601DateParser.parse(dt));
+                        	 ISO8601DateParser.parse(dt));
             }
         }
         return feedMap;   
@@ -105,7 +116,7 @@ public class AnyFeedParser implements IFeedParser {
         put(feedMap, "title", channel.getChildText("title",ns));
         put(feedMap, "link", channel.getChildText("link",ns));
         put(feedMap, new String[] {"description","subtitle"},
-                channel.getChildText("description",ns));
+                	 channel.getChildText("description",ns));
         
         Iterator<?> items = null;
         if (root.getName().equals("rss")) {                    
@@ -115,8 +126,7 @@ public class AnyFeedParser implements IFeedParser {
         }
         List<Map<String, Object>> itemList = new ArrayList<Map<String, Object>>();
         put(feedMap, new String[] {"entries", "items"}, itemList);
-        SimpleDateFormat rfc822_format =
-                new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );  
+        SimpleDateFormat rfc822_format = new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );  
         while (items.hasNext()) {                               
             Element item = (Element) items.next();
             Map<String, Object> itemMap = new HashMap<String, Object>();
@@ -133,15 +143,15 @@ public class AnyFeedParser implements IFeedParser {
             }
             put(itemMap,"title", item.getChildText("title", ns));
             put(itemMap,"content", item.getChildText("encoded", contentNS)); 
-            put(itemMap,new String[] {"description","summary"},
-                    item.getChildText("description", ns));
+            put(itemMap, new String[] {"description","summary"},
+                    	 item.getChildText("description", ns));
             
             if (item.getChild("pubDate", ns) != null) {           
                 put(itemMap, new String[] {"pubDate","updated"},
-                        rfc822_format.parse(item.getChildText("pubDate", ns)));
+                        	 rfc822_format.parse(item.getChildText("pubDate", ns)));
             } else if (item.getChild("date", dcNS) != null) {      
                 put(itemMap, new String[] {"pubDate","updated"},
-                        ISO8601DateParser.parse(item.getChildText("date", dcNS)));
+                        	 ISO8601DateParser.parse(item.getChildText("date", dcNS)));
             }
             Element enc = item.getChild("enclosure", ns);   
             if (enc != null) {
@@ -219,8 +229,8 @@ public class AnyFeedParser implements IFeedParser {
     
     private boolean isRelativeURI(String uri) {
         if (  uri.startsWith("http://")
-        || uri.startsWith("https://")
-        || uri.startsWith("/")) {
+        	  || uri.startsWith("https://")
+        	  || uri.startsWith("/")) {
             return false;
         }
         return true;
@@ -234,8 +244,8 @@ public class AnyFeedParser implements IFeedParser {
                 Element link = (Element)links.next();
                 if (!root.equals(link.getParent())) break;
                 String href = link.getAttribute("href").getValue();
-                if (   link.getAttribute("rel", ns) == null
-                        || link.getAttribute("rel", ns).getValue().equals("alternate")) {
+                if (link.getAttribute("rel", ns) == null
+                    || link.getAttribute("rel", ns).getValue().equals("alternate")) {
                     href = resolveURI(null, link, href);
                     try {
                         baseURI = new URL(href);

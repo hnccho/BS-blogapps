@@ -19,29 +19,28 @@ public class ParseRSS20 {
     public ParseRSS20(String[] args) throws Exception {
         FileInputStream inputStream = new FileInputStream(args[0]);
         
-		SAXBuilder builder = new SAXBuilder();          //|#1
-		Document feedDoc = builder.build(inputStream);  //|#2
-		Element root = feedDoc.getRootElement();        //|#3
-		Element channel = root.getChild("channel");     //|#4
+		SAXBuilder builder = new SAXBuilder();          
+		Document feedDoc = builder.build(inputStream);  
+		Element root = feedDoc.getRootElement();        
+		Element channel = root.getChild("channel");    
 		   
-		Iterator items = channel.getChildren("item").iterator();   //|#5
+		Iterator<?> items = channel.getChildren("item").iterator();   
 		
 		SimpleDateFormat rfc822_format =                                 
-		   new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );  //|#6
+		   new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );  
 		
 		while (items.hasNext()) {   
-		   Element item = (Element) items.next();  //|#7
+		   Element item = (Element) items.next();  
 		
-		   System.out.println("Title: " + item.getChildText("title"));  //|#8            
+		   System.out.println("Title: " + item.getChildText("title"));           
 		   System.out.println("Link: " + item.getChildText("link"));  
 		            
-		   String dateString = item.getChildText("pubDate");  //|#9
+		   String dateString = item.getChildText("pubDate");  
 		   if (dateString != null) {
 		      Date date = rfc822_format.parse(dateString);
 		      System.out.println("Date: " + date.toString());
 		   }
-		   System.out.println("Description: "       //|#10
-		      + item.getChildText("description"));
+		   System.out.println("Description: " + item.getChildText("description"));
 		   System.out.println("\n");
 		}
     }

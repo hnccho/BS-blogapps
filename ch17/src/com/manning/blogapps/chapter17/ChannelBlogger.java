@@ -1,8 +1,11 @@
 
 package com.manning.blogapps.chapter17;
-import org.relayirc.chatengine.*;
+import org.relayirc.chatengine.Channel;
+import org.relayirc.chatengine.ChannelAdapter;
+import org.relayirc.chatengine.ChannelEvent;
 
-public class ChannelBlogger extends ChannelAdapter {  //|#1
+public class ChannelBlogger extends ChannelAdapter {  
+	
    private ChatBlogger chatBlogger;
    private String nick;
    private long lastBlogTime = 0L;
@@ -10,18 +13,19 @@ public class ChannelBlogger extends ChannelAdapter {  //|#1
    public static final String CONTENT = "content:";
 
    public ChannelBlogger(
-           ChatBlogger chatBlogger, String nick) {  //|#2
+           ChatBlogger chatBlogger, String nick) {  
        this.nick = nick;
        this.chatBlogger = chatBlogger;
    }
-   public void onMessage(ChannelEvent event) {        //|#3
+   
+   public void onMessage(ChannelEvent event) {        
        Channel channel = (Channel)event.getSource();  
        try {
            String line = (String)event.getValue();
-           if (line.startsWith(nick+" exit")) {     //|#4
+           if (line.startsWith(nick+" exit")) {     
                chatBlogger.stop(); 
            } 
-           else if (line.startsWith(nick+" undo")) {          //|#5
+           else if (line.startsWith(nick+" undo")) {         
                long currentTime = System.currentTimeMillis();
                if (currentTime - lastBlogTime < 30*1000) {
                   channel.sendPrivMsg("Performing undo");                      
@@ -36,18 +40,17 @@ public class ChannelBlogger extends ChannelAdapter {  //|#1
                String input = line.substring(nick.length()+1);
                int titleloc = input.indexOf(TITLE);
                int contentloc = input.indexOf(CONTENT);
-               if (titleloc != -1 && contentloc != -1) {  //|#6
+               if (titleloc != -1 && contentloc != -1) {  
                    String title = input.substring(
                        titleloc +TITLE.length(),contentloc-1);
                    String content = input.substring(
                        contentloc + CONTENT.length()); 
                    
-                   String id = chatBlogger.blog(title, content); //|#7
+                   String id = chatBlogger.blog(title, content); 
                    lastBlogTime = System.currentTimeMillis();
-                   channel.sendPrivMsg("Posted [" + id + "]"); //|#8
+                   channel.sendPrivMsg("Posted [" + id + "]");
                } else {
-                   channel.sendPrivMsg(
-                      "Ignoring, need title: and content:");
+                   channel.sendPrivMsg("Ignoring, need title: and content:");
                }
            } 
            else if (line.startsWith(nick)) {   
@@ -61,7 +64,8 @@ public class ChannelBlogger extends ChannelAdapter {  //|#1
            }
            channel.sendPrivMsg("ERROR processing command");
        }           
-   }
+    }
+   
 }
 
 

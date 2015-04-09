@@ -24,6 +24,7 @@ import com.manning.blogapps.chapter18.Utilities;
  * @author Dave Johnson
  */
 public class FileCasterImpl implements FileCaster {
+	
     private String uploadsDir;
     private String metadataDir;  
     private String absoluteUrl;
@@ -37,6 +38,7 @@ public class FileCasterImpl implements FileCaster {
         this.absoluteUrl = absoluteUrl;
         update();
     }  
+    
     public static FileCaster getFileCaster(HttpServletRequest request) 
         throws Exception { 
         ServletContext ctx = request.getSession(true).getServletContext();
@@ -52,12 +54,15 @@ public class FileCasterImpl implements FileCaster {
         } 
         return ret;
     }
+    
     public synchronized Date getLastUpdateDate() {
         return lastModified;
     }   
+    
     public String getAbsoluteUrl() {
         return absoluteUrl;
     }
+    
     public List getRecentFileCasts(int max) throws Exception {
         ArrayList allCasts = new ArrayList();
         ArrayList recentCasts = new ArrayList();
@@ -80,6 +85,7 @@ public class FileCasterImpl implements FileCaster {
         }
         return recentCasts;
     }
+    
     public void addFileCast(FileCast fileCast) throws Exception {     
         FileItem upload = fileCast.getUpload();
         if (upload != null) {
@@ -96,7 +102,8 @@ public class FileCasterImpl implements FileCaster {
         metadataOS.flush();
         metadataOS.close();   
         update();
-    }   
+    }  
+    
     public void removeFileCast(String filename) throws Exception {   
         File uploadedFile = new File(
             uploadsDir + File.separator + filename);
@@ -106,6 +113,7 @@ public class FileCasterImpl implements FileCaster {
         castFile.delete();
         update();
     }
+    
     private synchronized void update() {
         try {
             List casts = getRecentFileCasts(1);
@@ -117,6 +125,7 @@ public class FileCasterImpl implements FileCaster {
             e.printStackTrace();
         }
     }
+    
     class FileCastComparator implements Comparator {
         public int compare(Object o1, Object o2) {
             FileCast file1 = (FileCast)o1;
@@ -126,4 +135,5 @@ public class FileCasterImpl implements FileCaster {
             else return -1;
         }
     }
+    
 }

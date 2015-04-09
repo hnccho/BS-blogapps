@@ -30,8 +30,8 @@ import java.util.TreeSet;
  * @ejb:bean name="PlanetGroupData"
  * @hibernate.class lazy="false" table="rag_group"
  */
-public class PlanetGroupData implements Serializable
-{
+public class PlanetGroupData implements Serializable {
+	
     transient private String[] catArray = null;
 
     /** Database ID */
@@ -65,12 +65,10 @@ public class PlanetGroupData implements Serializable
      * @hibernate.id column="id" 
      *     generator-class="uuid.hex" unsaved-value="null"
      */
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
-    public void setId(String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
     /** 
@@ -79,79 +77,65 @@ public class PlanetGroupData implements Serializable
      * @hibernate.collection-one-to-many 
      *    class="org.roller.pojos.PlanetGroupSubscriptionAssoc"
      */
-    public List getGroupSubscriptionAssocs()
-    {
+    public List getGroupSubscriptionAssocs() {
         return subscriptionAssocs;
     }
-    public void setGroupSubscriptionAssocs(List subscriptionAssocs)
-    {
+    public void setGroupSubscriptionAssocs(List subscriptionAssocs) {
         this.subscriptionAssocs = subscriptionAssocs;
     }
     /** 
      * @hibernate.property column="cat_restriction" non-null="false" unique="false"
      */
-    public String getCategoryRestriction()
-    {
+    public String getCategoryRestriction() {
         return categoryRestriction;
     }
-    public void setCategoryRestriction(String categoryRestriction)
-    {
+    public void setCategoryRestriction(String categoryRestriction) {
         this.categoryRestriction = categoryRestriction;
         catArray = null;
     }
     /** 
      * @hibernate.property column="description" non-null="false" unique="false"
      */
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
     /** 
      * @hibernate.property column="handle" non-null="false" unique="false"
      */
-    public String getHandle()
-    {
+    public String getHandle() {
         return handle;
     }
-    public void setHandle(String handle)
-    {
+    public void setHandle(String handle) {
         this.handle = handle;
     }
     /** 
      * @hibernate.property column="max_feed_entries" non-null="false" unique="false"
      */
-    public int getMaxFeedEntries()
-    {
+    public int getMaxFeedEntries() {
         return maxFeedEntries;
     }
-    public void setMaxFeedEntries(int maxFeedEntries)
-    {
+    public void setMaxFeedEntries(int maxFeedEntries) {
         this.maxFeedEntries = maxFeedEntries;
     }
     /** 
      * @hibernate.property column="max_page_entries" non-null="false" unique="false"
      */
-    public int getMaxPageEntries()
-    {
+    public int getMaxPageEntries() {
         return maxPageEntries;
     }
-    public void setMaxPageEntries(int maxPageEntries)
-    {
+    public void setMaxPageEntries(int maxPageEntries) {
         this.maxPageEntries = maxPageEntries;
     }
     /** 
      * @hibernate.property column="title" non-null="false" unique="false"
      */
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -160,8 +144,7 @@ public class PlanetGroupData implements Serializable
     /**
      * Returns true if entry is qualified for inclusion in this group.
      */
-    public boolean qualified(PlanetEntryData entry)
-    {
+    public boolean qualified(PlanetEntryData entry) {
         String[] cats = getCategoryRestructionAsArray();
         if (cats == null || cats.length == 0) return true;
         for (int i=0; i<cats.length; i++) 
@@ -173,8 +156,7 @@ public class PlanetGroupData implements Serializable
     
     //------------------------------------------------------------- convenience
 
-    private String[] getCategoryRestructionAsArray()
-    {
+    private String[] getCategoryRestructionAsArray() {
         if (catArray == null && categoryRestriction != null)
         {
             StringTokenizer toker = new StringTokenizer(categoryRestriction,",");
@@ -189,52 +171,46 @@ public class PlanetGroupData implements Serializable
         return catArray;
     }
     /** no-op to please XDoclet generated form */
-    private void setCategoryRestructionAsArray(String[] ignored)
-    {
+    private void setCategoryRestructionAsArray(String[] ignored) {
     }
     
     //---------------------------------------------------------- implementation
 
-    public void removeSubscription(PlanetSubscriptionData sub)
-    {
+    public void removeSubscription(PlanetSubscriptionData sub) {
         Set set = new TreeSet();
         Iterator assocs = getGroupSubscriptionAssocs().iterator();
         PlanetGroupSubscriptionAssoc target = null;
-        while (assocs.hasNext())
-        {
+        while (assocs.hasNext()) {
             PlanetGroupSubscriptionAssoc assoc = 
                     (PlanetGroupSubscriptionAssoc)assocs.next();
-            if (assoc.getSubscription().getFeedUrl().equals(sub.getFeedUrl()))
-            {
+            if (assoc.getSubscription().getFeedUrl().equals(sub.getFeedUrl())) {
                 target = assoc;
                 break;
             }
         }
         subscriptionAssocs.remove(target);
     }
-    public void addSubscription(PlanetSubscriptionData sub)
-    {
+    
+    public void addSubscription(PlanetSubscriptionData sub) {
         PlanetGroupSubscriptionAssoc assoc = 
                 new PlanetGroupSubscriptionAssoc();
         assoc.setGroup(this);
         assoc.setSubscription(sub);
         subscriptionAssocs.add(assoc);
     }
-    public void addSubscriptions(Collection subsList)
-    {
+    
+    public void addSubscriptions(Collection subsList) {
         Iterator subs = subsList.iterator();
-        while (subs.hasNext())
-        {
+        while (subs.hasNext()) {
             PlanetSubscriptionData sub = (PlanetSubscriptionData)subs.next();
             addSubscription(sub);
         }
     }
-    public Set getSubscriptions() 
-    {
+    
+    public Set getSubscriptions() {
         Set set = new TreeSet();
         Iterator assocs = getGroupSubscriptionAssocs().iterator();
-        while (assocs.hasNext())
-        {
+        while (assocs.hasNext()) {
             PlanetGroupSubscriptionAssoc assoc = 
                     (PlanetGroupSubscriptionAssoc)assocs.next();
             set.add(assoc.getSubscription());

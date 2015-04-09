@@ -17,6 +17,7 @@
 package com.manning.blogapps.chapter07.pubcontrol;
 import org.jdom.Element;
 import org.jdom.Namespace;
+
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
@@ -26,18 +27,18 @@ public class PubControlModuleParser implements ModuleParser {
         return PubControlModule.URI; 
     }
 	
-    public Module parse(Element elem) {                         //|#1
+    public Module parse(Element elem) {                         
         Namespace ns = Namespace.getNamespace(PubControlModule.URI);
-        PubControlModule module = new PubControlModuleImpl();   //|#2
-        Element control = elem.getChild("control", ns);         //|#3
+        PubControlModule module = new PubControlModuleImpl();   
+        Element control = elem.getChild("control", ns);         
         if (control != null) {
-            Element draft = control.getChild("draft", ns);      //|#4
-            if (draft != null && "yes".equals(draft.getText())) //|#5
+            Element draft = control.getChild("draft", ns);      
+            if (draft != null && "yes".equals(draft.getText()))
                 module.setDraft(true);
             else if (draft != null && "no".equals(draft.getText()))
                 module.setDraft(false);
             else 
-                module = null; //|#6
+                module = null; 
         }
         return module;
     }

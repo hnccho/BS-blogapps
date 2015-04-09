@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
 
-import com.manning.blogapps.chapter08.filedepot.FileDepot;
-
 import junit.framework.TestCase;
+
+import com.manning.blogapps.chapter08.filedepot.FileDepot;
 
 /**
  * @author Dave Johnson
@@ -27,8 +27,7 @@ public class FileDepotTest extends TestCase {
         
         long lastLastModified = Long.MAX_VALUE;
         Iterator files = depot.getFiles().iterator();
-        while (files.hasNext())
-        {
+        while (files.hasNext()) {
             File file = (File) files.next();
             assertTrue(file.lastModified() <= lastLastModified);
             lastLastModified = file.lastModified();

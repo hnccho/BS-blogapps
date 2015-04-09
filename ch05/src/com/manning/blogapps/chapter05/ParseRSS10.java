@@ -24,7 +24,8 @@ public class ParseRSS10 {
         Document feedDoc = builder.build(inputStream);         
         Element root = feedDoc.getRootElement();        
         
-        Iterator items = root.getChildren("item", ns).iterator();
+        Iterator<?> items = root.getChildren("item", ns).iterator();
+        
         while (items.hasNext()) {
             
             Element item = (Element) items.next(); 
@@ -37,8 +38,7 @@ public class ParseRSS10 {
                 Date date = ISO8601DateParser.parse(dateString);
                 System.out.println("Date: " + date.toString());
             }
-            System.out.println(
-                "Description: " + item.getChildText("description", ns));
+            System.out.println("Description: " + item.getChildText("description", ns));
             System.out.println("\n");
         }
     }

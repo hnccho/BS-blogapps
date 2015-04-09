@@ -15,29 +15,30 @@
  */
 package com.manning.blogapps.chapter10.metaweblogclient;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Vector;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
-import java.io.IOException;
+import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
 
-import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 import com.manning.blogapps.chapter10.blogclient.Blog;
 import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 
 /**
  * BlogClient implementation that uses a mix of Blogger and MetaWeblog API methods.
  * @author Dave Johnson
  */
 public class MetaWeblogConnection implements BlogConnection {
-    private URL url = null;
+
+	private URL url = null;
     private String userName = null;
     private String password = null;
     private XmlRpcClient client = null;
@@ -58,9 +59,11 @@ public class MetaWeblogConnection implements BlogConnection {
             throw new BlogClientException("ERROR connecting to server", t);
         }
     }
+    
     public List getBlogs() {
         return new ArrayList(blogs.values());
     }
+    
     private Map createBlogMap() throws XmlRpcException, IOException {
         Map blogMap = new HashMap();
         Vector params = new Vector();
@@ -80,11 +83,14 @@ public class MetaWeblogConnection implements BlogConnection {
         }
         return blogMap;
     }
+    
     public Blog getBlog(String token) {
         return (Blog)blogs.get(token);
     }
+    
     public void setAppkey(String appkey) {
         this.appkey = appkey;
     }
+    
 }
 

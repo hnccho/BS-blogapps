@@ -31,8 +31,7 @@ public class ISO8601DateParser {
     // 2004-06-14T19:GMT20:30Z
     // 2004-06-20T06:GMT22:01Z
 
-    private static SimpleDateFormat df
-        = new SimpleDateFormat( "yyyy-MM-dd'T'hh:mm:ssz" );
+    private static SimpleDateFormat df = new SimpleDateFormat( "yyyy-MM-dd'T'hh:mm:ssz" );
 
     // http://www.cl.cam.ac.uk/~mgk25/iso-time.html
     //    

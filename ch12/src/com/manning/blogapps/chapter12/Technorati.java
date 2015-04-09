@@ -33,6 +33,7 @@ import org.jdom.xpath.XPath;
 
 /** Simple Technorati wrapper for Java. @author David M Johnson */
 public class Technorati {
+	
     private String mKey = null;
 
     public Technorati(String key) {
@@ -146,7 +147,6 @@ public class Technorati {
         public String getExcerpt() {return mExcerpt;}
     }
 
-    
     protected Document getRawResults(String urlString, Map args) throws Exception {
         int count = 0;
         Iterator keys = args.keySet().iterator();
@@ -175,5 +175,6 @@ public class Technorati {
         Element e = (Element)xpath.selectSingleNode(elem);
         return e!=null ? Integer.parseInt(e.getText()) : 0;
     }
+    
 }
 

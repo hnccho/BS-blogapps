@@ -18,15 +18,15 @@ package com.manning.blogapps.chapter10.blogclientui;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 /**
  * Panel with table that lists recent blog entries.

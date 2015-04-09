@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.examples;
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
 import org.apache.commons.codec.binary.Base64;
 
 /** Command-line program gets from a URL (w/basic digest auth) */
@@ -42,4 +45,5 @@ public class AuthGetJava {
             System.out.println(s);
         }
     }
+    
 }

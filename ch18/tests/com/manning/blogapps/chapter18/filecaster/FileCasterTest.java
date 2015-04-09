@@ -11,9 +11,11 @@ import junit.framework.TestCase;
  * Tests for FileCasterImpl and FileCast.
  */
 public class FileCasterTest extends TestCase {
+	
     String uploadDir = "./test-sandbox/uploads";
     String metadataDir = "./test-sandbox/metadata";
     String testUploadDir = "./test-sandbox/testuploads";
+    
     protected void setUp() throws Exception {
         File udir = new File(uploadDir);
         File[] files = udir.listFiles();
@@ -26,6 +28,7 @@ public class FileCasterTest extends TestCase {
             assertTrue(metaFiles[i].delete());
         }
     }
+    
     public void testFileCastPersistence() throws Exception {
         Date updateTime = new Date();        
         FileCast fc1 = new FileCast();
@@ -48,6 +51,7 @@ public class FileCasterTest extends TestCase {
         assertEquals(fc1.getDescription(), fc2.getDescription());
         //assertEquals(fc1.getUploadTime(), fc2.getUploadTime());
     }
+    
     public void testAddRemoveFileCastXML() throws Exception {
 
         FileCaster caster = new FileCasterImpl(uploadDir, metadataDir,"");
@@ -78,6 +82,7 @@ public class FileCasterTest extends TestCase {
         caster.removeFileCast("");
         assertEquals(0, caster.getRecentFileCasts(10).size());
     }
+    
     public void testAddRemoveFileCastFile() throws Exception {
         Date updateTime = new Date();        
         FileCast fc1 = new FileCast();
@@ -108,6 +113,7 @@ public class FileCasterTest extends TestCase {
         caster.removeFileCast("");
         assertEquals(0, caster.getRecentFileCasts(10).size());
     }
+    
     public void testURLToFilename() {
         FileCast cast = new FileCast();
         cast.setRemoteUrl(
@@ -116,6 +122,7 @@ public class FileCasterTest extends TestCase {
            "example_com_path1_path2_param1_a_param2_b", 
            cast.getSaveFilename());
     }
+    
     /* public void testFileListCount() throws Exception {
         
         FileCaster depot = new FileCasterImpl("./web/depot");
@@ -140,4 +147,5 @@ public class FileCasterTest extends TestCase {
         FileDepotTest fdt = new FileDepotTest();
         fdt.testFileListCount();
     } */
+    
 }

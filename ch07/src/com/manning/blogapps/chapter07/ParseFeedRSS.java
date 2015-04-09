@@ -1,10 +1,15 @@
 package com.manning.blogapps.chapter07;
 
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.rss.*;
-import com.sun.syndication.io.WireFeedInput;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Iterator;
+
+import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Enclosure;
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.io.WireFeedInput;
 
 /**
  * Simple example that prints title, link, date and description.
@@ -12,7 +17,7 @@ import java.util.Iterator;
 public class ParseFeedRSS {
 
 	public static void main(String[] args) throws Exception {
-        if (args.length < 1) {
+		if (args.length < 1) {
             System.out.println("USAGE: ParseFeedRSS <feed-file-name>");
             return;
         }
@@ -20,32 +25,32 @@ public class ParseFeedRSS {
     }
 	
     public void parseFeed(InputStream is) throws Exception {
-        WireFeedInput input = new WireFeedInput();                  //|#3
-        WireFeed wireFeed = input.build(new InputStreamReader(is)); //|#4
-        if (!(wireFeed instanceof Channel)) {            //|#5
+        WireFeedInput input = new WireFeedInput();                  
+        WireFeed wireFeed = input.build(new InputStreamReader(is)); 
+        if (!(wireFeed instanceof Channel)) {            
             System.out.println("Not an RSS feed");
             return;
         }
-        Channel channel = (Channel)wireFeed;                        //|#6
+        Channel channel = (Channel)wireFeed;                        
         Iterator items = channel.getItems().iterator();
-        while (items.hasNext()) {                                   //|#7
+        while (items.hasNext()) {                                   
             Item item = (Item)items.next();
             
-            System.out.println("Guid:        " + item.getGuid());   //|#8
+            System.out.println("Guid:        " + item.getGuid());   
             System.out.println("  Title:     " + item.getTitle());
             System.out.println("  Published: " + item.getPubDate());
             System.out.println("  Link:      " + item.getLink());
             
-            if (item.getDescription() != null) {                    //|#9
+            if (item.getDescription() != null) {                    
                 System.out.println("  Desc: "
                         + item.getDescription().getValue());
             }
-            for (int i=0; i < item.getEnclosures().size(); i++) {   //|#10
+            for (int i=0; i < item.getEnclosures().size(); i++) {   
                 Enclosure enc = (Enclosure)item.getEnclosures().get(i);
                 System.out.println(
-                        "  Enclosure type=" + enc.getType() +
-                        " length="          + enc.getLength() +
-                        " url="             + enc.getUrl());
+                        " Enclosure type=" + enc.getType() +
+                        " length="         + enc.getLength() +
+                        " url="            + enc.getUrl());
             }
             System.out.println("\n");
         }

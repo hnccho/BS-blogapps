@@ -1,7 +1,11 @@
 package com.manning.blogapps.chapter02;
 
-import java.util.*;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Properties;
+import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClient;
 
@@ -12,6 +16,7 @@ public class BlogPoster {
         System.out.println("Blog Poster: Java Edition");
         String title = null;
         String description = null;
+        
         if (args.length == 1) {
             description = args[0];
         } else if (args.length == 2) {

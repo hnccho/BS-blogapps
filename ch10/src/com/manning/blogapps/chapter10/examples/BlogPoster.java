@@ -15,9 +15,13 @@
  */
 package com.manning.blogapps.chapter10.examples;
 
-import com.manning.blogapps.chapter10.blogclient.*;
-import java.util.*;
-import java.io.*;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
+import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 public class BlogPoster {
     
@@ -44,8 +48,7 @@ public class BlogPoster {
         String blogid = config.getProperty("blogid");
         String target = config.getProperty("target");
         
-        BlogConnection con = 
-            BlogConnectionFactory.getBlogConnection(
+        BlogConnection con = BlogConnectionFactory.getBlogConnection(
                 "atom", target, username, password);
         Blog blog = (Blog)con.getBlogs().get(0);
         BlogEntry entry = blog.newEntry();
@@ -54,4 +57,5 @@ public class BlogPoster {
         entry.save();
         System.out.println("newPost result: " + entry.getId());
     }
+    
 }

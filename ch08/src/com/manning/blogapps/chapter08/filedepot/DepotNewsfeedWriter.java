@@ -1,82 +1,93 @@
 package com.manning.blogapps.chapter08.filedepot;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Iterator;
+
 import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.synd.*;
+import com.sun.syndication.feed.synd.SyndContent;
+import com.sun.syndication.feed.synd.SyndContentImpl;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndEntryImpl;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.feed.synd.SyndLink;
+import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.io.WireFeedOutput;
 
-public class DepotNewsfeedWriter {              //|#1
+public class DepotNewsfeedWriter {             
 
-	private Depot depot;                        //|#1
+	private Depot depot;                        
     
-	public DepotNewsfeedWriter(Depot depot) {   //|#1
-        this.depot = depot;                     //|#1
+	public DepotNewsfeedWriter(Depot depot) {   
+        this.depot = depot;                     
     }
     
-    public void write(                                     //|#2
-            Writer writer, String baseURL, String format)  //|#2
+    public void write(                                     
+            Writer writer, String baseURL, String format)  
             throws Exception { 
 
-        SyndFeed feed = new SyndFeedImpl();                 //|#3
-        feed.setFeedType(format);                           //|#3
-        feed.setLanguage("en-us");                          //|#3
-        feed.setTitle("File Depot Newsfeed");               //|#3
-        feed.setDescription(                                //|#3
-            "Newly uploaded files in the File Depot");      //|#3
-        feed.setLink(baseURL);                              //|#3
-        feed.setUri(baseURL + "/depot-newsfeed");           //|#3
-        feed.setPublishedDate(depot.getLastUpdateDate());   //|#3 
+        SyndFeed feed = new SyndFeedImpl();                
+        feed.setFeedType(format);                           
+        feed.setLanguage("en-us");                         
+        feed.setTitle("File Depot Newsfeed");               
+        feed.setDescription("Newly uploaded files in the File Depot");      
+        feed.setLink(baseURL);                              
+        feed.setUri(baseURL + "/depot-newsfeed");           
+        feed.setPublishedDate(depot.getLastUpdateDate());  
         
-        SyndLink selfLink = new SyndLinkImpl();              //|#4                  
-        selfLink.setHref(feed.getUri());                     //|#4
-        selfLink.setRel("self");                             //|#4
-        feed.setLinks(Collections.singletonList(selfLink));  //|#4
+        SyndLink selfLink = new SyndLinkImpl();                                
+        selfLink.setHref(feed.getUri());                    
+        selfLink.setRel("self");                             
+        feed.setLinks(Collections.singletonList(selfLink));  
         
-        ArrayList entries = new ArrayList();            //|#5
-        Iterator files = depot.getFiles().iterator();   //|#5
-        while (files.hasNext()) {                       //|#5            
-            File file = (File) files.next();            //|#5
+        ArrayList entries = new ArrayList();            
+        Iterator files = depot.getFiles().iterator();   
+        while (files.hasNext()) {                                   
+            File file = (File) files.next();            
             
-            SyndEntry entry = new SyndEntryImpl();                  //|#6
-            String url = baseURL + file.getName();                  //|#6
-            entry.setLink(url);                                     //|#6
-            entry.setUri(url);                                      //|#6
-            entry.setTitle(file.getName());                         //|#6
-            entry.setPublishedDate(new Date(file.lastModified()));  //|#6
-            entry.setUpdatedDate(new Date(file.lastModified()));    //|#6
+            SyndEntry entry = new SyndEntryImpl();                  
+            String url = baseURL + file.getName();                  
+            entry.setLink(url);                                     
+            entry.setUri(url);                                      
+            entry.setTitle(file.getName());                         
+            entry.setPublishedDate(new Date(file.lastModified())); 
+            entry.setUpdatedDate(new Date(file.lastModified()));   
                         
-            SyndContent desciption = new SyndContentImpl();   //|#7
-            desciption.setValue(                              //|#7
-               "Click <a href='"+url+"'>" + file.getName()    //|#7
-               + "</a> to download the file.");               //|#7
-            entry.setDescription(desciption);                 //|#7
+            SyndContent desciption = new SyndContentImpl();   
+            desciption.setValue(                             
+               "Click <a href='"+url+"'>" + file.getName()   
+               + "</a> to download the file.");               
+            entry.setDescription(desciption);                 
             
-            entries.add(entry);    //|#8
+            entries.add(entry);   
         }
-        feed.setEntries(entries);  //|#9
+        feed.setEntries(entries);  
         
-        WireFeedOutput output = new WireFeedOutput();  //|#10
-        WireFeed wireFeed = feed.createWireFeed();     //|#10
-        output.output(wireFeed, writer);               //|#10
+        WireFeedOutput output = new WireFeedOutput();  
+        WireFeed wireFeed = feed.createWireFeed();     
+        output.output(wireFeed, writer);               
     }
     
-    public void main(String[] args) throws Exception {     //|#11
-        if (args.length < 3)  {                            //|#11
-            System.out.println(                            //|#11
-                "USAGE: DepotNewsfeedWriter "              //|#11
-              + "[depotDir] [depotUrl] [file] [format]");  //|#11
-            return;                                        //|#11
+    public void main(String[] args) throws Exception {    
+        if (args.length < 3)  {                           
+            System.out.println(                           
+                "USAGE: DepotNewsfeedWriter "             
+              + "[depotDir] [depotUrl] [file] [format]");  
+            return;                                       
         }
-        String depotDir = args[0];                       //|#12
-        Depot depot = new FileDepot(depotDir);           //|#12        
-        DepotNewsfeedWriter newsfeedWriter =             //|#12
-            new DepotNewsfeedWriter(depot);              //|#12
+        String depotDir = args[0];                      
+        Depot depot = new FileDepot(depotDir);               
+        DepotNewsfeedWriter newsfeedWriter = new DepotNewsfeedWriter(depot);             
 
-        String depotUrl = args[1];                       //|#13
-        String filePath = args[2];                       //|#13
-        String format = args[3];                         //|#13
-        FileWriter writer = new FileWriter(filePath);    //|#13
-        newsfeedWriter.write(writer, depotUrl, format);  //|#13
+        String depotUrl = args[1];                      
+        String filePath = args[2];                       
+        String format = args[3];                         
+        FileWriter writer = new FileWriter(filePath);    
+        newsfeedWriter.write(writer, depotUrl, format);  
     }
     
 }

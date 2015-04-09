@@ -19,20 +19,25 @@ package com.manning.blogapps.chapter11.rome;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 public class ContentModuleImpl extends ModuleImpl implements ContentModule {
+	
     private String _encoded;
 
     public ContentModuleImpl() {
         super(ContentModule.class,ContentModule.URI);
     }
+    
     public String getEncoded() {
         return _encoded;
     }
+    
     public void setEncoded(String encoded) {
         _encoded = encoded;
     }
+    
     public Class getInterface() {
         return ContentModule.class;
     }
+    
     public void copyFrom(Object obj) {
         ContentModule sm = (ContentModule) obj;
         setEncoded(sm.getEncoded());

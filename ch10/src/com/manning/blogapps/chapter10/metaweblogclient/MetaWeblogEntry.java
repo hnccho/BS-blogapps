@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Vector;
 
 import com.manning.blogapps.chapter10.blogclient.BlogClientException;
-import com.manning.blogapps.chapter10.blogclient.impl.BaseBlogEntry;
 import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+import com.manning.blogapps.chapter10.blogclient.impl.BaseBlogEntry;
 
 
 /** 
@@ -106,4 +106,5 @@ public class MetaWeblogEntry extends BaseBlogEntry {
         }
         return struct;
     }
+    
 }

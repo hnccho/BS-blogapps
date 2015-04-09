@@ -38,6 +38,7 @@ import com.sun.syndication.io.WireFeedOutput;
  * @author Dave Johnson
  */
 public class RomeUtilities {
+	
     public static final String FEED_TYPE = "atom_1.0"; 
 
     /** 

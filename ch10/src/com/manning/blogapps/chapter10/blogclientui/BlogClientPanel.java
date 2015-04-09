@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.blogclientui;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.manning.blogapps.chapter10.blogclient.*;
-import java.util.Arrays;
-import java.util.Iterator;
-import javax.swing.DefaultListModel;
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+import com.manning.blogapps.chapter10.blogclient.BlogResource;
 
 /**
  * Form for editing a single blog entry.

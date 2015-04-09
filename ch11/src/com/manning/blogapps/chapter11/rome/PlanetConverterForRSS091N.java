@@ -27,12 +27,15 @@ public class PlanetConverterForRSS091N extends ConverterForRSS091Userland {
     public PlanetConverterForRSS091N() {
         this("rss_0.91N");
     }
+    
     protected PlanetConverterForRSS091N(String type) {
         super(type);
     }
+    
     protected SyndEntry createSyndEntry(Item item) {
         SyndEntry entry = super.createSyndEntry(item);
         entry.setPublishedDate(item.getPubDate()); 
         return entry;
     }
+    
 }

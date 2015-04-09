@@ -9,8 +9,9 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
 public class Tapi2opml {
-    public static void main(String[] args) throws Exception {
-        if (args.length < 3) {  //|#1
+
+	public static void main(String[] args) throws Exception {
+        if (args.length < 3) {  
             System.out.println(
                     "USAGE: tapi2opml [blogcosmos|linkcosmos|outbound] [search] [filename]");
             System.exit(-1);
@@ -18,7 +19,7 @@ public class Tapi2opml {
         String option = args[0];
         String search = args[1];
         String filename = args[2];
-        Technorati tapi = new Technorati();  //|#2
+        Technorati tapi = new Technorati();  
         Technorati.Result result = null;
         if (option.equals("blogcosmos")) {         
             result = tapi.getWeblogCosmos(search);    
@@ -32,19 +33,20 @@ public class Tapi2opml {
         } 
         FileWriter fw = new FileWriter(filename);
         PrintWriter pw = new PrintWriter(fw);
-        pw.println(tapi2opml(result));   //#4
+        pw.println(tapi2opml(result));   
         pw.close();
         checkXml(filename);
         System.out.println("Wrote file ["+filename+"]");
     }
-    public static String tapi2opml(Technorati.Result result) {  //|#5
+	
+    public static String tapi2opml(Technorati.Result result) {  
         StringBuffer sb = new StringBuffer();
-        sb.append("<?xml version=\"1.0\" encoding='utf-8'?>\n"); //|#6
+        sb.append("<?xml version=\"1.0\" encoding='utf-8'?>\n"); 
         sb.append("<opml version=\"1.1\">\n<body>\n");
-        Iterator blogs = result.getWeblogs().iterator();         //|#7
+        Iterator blogs = result.getWeblogs().iterator();         
         while (blogs.hasNext()) {
             Technorati.Weblog blog = (Technorati.Weblog) blogs.next();
-            if (blog.getRssurl() != null && blog.getRssurl().length() > 0) { //|#8
+            if (blog.getRssurl() != null && blog.getRssurl().length() > 0) { 
                 sb.append("<outline text=\"");
                 sb.append(blog.getName());
                 sb.append("\" xmlUrl=\"");
@@ -57,6 +59,7 @@ public class Tapi2opml {
         sb.append("</body></opml>"); 
         return sb.toString();
     }
+    
     public static void checkXml(String filename) throws Exception {
         try {
             SAXBuilder builder = new SAXBuilder();
@@ -67,5 +70,6 @@ public class Tapi2opml {
             e.printStackTrace();
         }
     }
+    
 }
 

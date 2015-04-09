@@ -1,11 +1,17 @@
 package com.manning.blogapps.chapter07;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+
 import com.manning.blogapps.chapter07.pubcontrol.PubControlModule;
 import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.atom.*;
+import com.sun.syndication.feed.atom.Content;
+import com.sun.syndication.feed.atom.Entry;
+import com.sun.syndication.feed.atom.Feed;
+import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.io.WireFeedInput;
-import java.io.*;
-import java.util.Iterator;
 
 /**
  * Simple example that prints title, dates, links, date and content.
@@ -21,23 +27,23 @@ public class ParseFeedAtom {
     }
 	
     public void parseFeed(InputStream is) throws Exception {
-        WireFeedInput input = new WireFeedInput();                      //|#2
-        WireFeed wireFeed = input.build(new InputStreamReader(is));     //|#3
-        if (!(wireFeed instanceof Feed)) {               //|#4
+        WireFeedInput input = new WireFeedInput();                      
+        WireFeed wireFeed = input.build(new InputStreamReader(is));     
+        if (!(wireFeed instanceof Feed)) {               
             System.out.println("Not an Atom feed");
             return;
         }
-        Feed feed = (Feed)wireFeed;                                     //|#5
+        Feed feed = (Feed)wireFeed;                                     
         Iterator entries = feed.getEntries().iterator();
-        while (entries.hasNext()) {                                     //|#6
+        while (entries.hasNext()) {                                     
             Entry entry = (Entry)entries.next();
             
-            System.out.println("Entry id: " + entry.getId());           //|#7
+            System.out.println("Entry id: " + entry.getId());           
             System.out.println("  Title:    " + entry.getTitle());
             System.out.println("  Modified: " + entry.getModified());
             System.out.println("  Updated:  " + entry.getUpdated());
             
-            if (entry.getContents().size() > 0) {                       //|#8
+            if (entry.getContents().size() > 0) {                      
                 Content content = (Content)entry.getContents().get(0);
                 System.out.print("  Content type=" + content.getType());
                 if (content.getSrc() != null) {
@@ -46,7 +52,7 @@ public class ParseFeedAtom {
                     System.out.println(" value=" + content.getValue());
                 }
             }
-            for (int i=0; i < entry.getAlternateLinks().size(); i++) {  //|#9
+            for (int i=0; i < entry.getAlternateLinks().size(); i++) {  
                 Link link = (Link)entry.getAlternateLinks().get(i);
                 System.out.println(
                         "  Link type=" + link.getType() +
@@ -55,7 +61,7 @@ public class ParseFeedAtom {
                         " hreflang=" + link.getHreflang() +
                         " href="     + link.getHref());
             }
-            for (int i=0; i < entry.getOtherLinks().size(); i++) {      //|#10
+            for (int i=0; i < entry.getOtherLinks().size(); i++) {      
                 Link link = (Link)entry.getOtherLinks().get(i);
                 System.out.println(
                         "  Link type=" + link.getType() +

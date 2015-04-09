@@ -16,8 +16,8 @@
 package com.manning.blogapps.chapter10.blogclient;
 
 import java.io.File;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Represents a blog which has collections of entries, uploaded file 

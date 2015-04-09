@@ -1,66 +1,67 @@
 package com.manning.blogapps.chapter08.web;
-import java.io.*;
+import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Date;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import com.manning.blogapps.chapter08.*;
-import com.manning.blogapps.chapter08.filedepot.*;
 
-public class DepotNewsfeedServletCached extends HttpServlet {    //|#1
-    LRUCache cache = new LRUCache(5, 5400);                      //|#1
-                                                                 //|#1
-    protected void doGet(                                        //|#1
-    		HttpServletRequest request,  HttpServletResponse response)   //|#1
-    		throws ServletException, IOException {                       //|#1
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-        ServletContext application = this.getServletContext();     //|#2
-        Depot depot = (Depot) application.getAttribute("depot");   //|#2
-        if (depot == null) {                                       //|#2
-            depot = new FileDepot(request.getRealPath("/depot"));  //|#2
-            application.setAttribute("depot", depot);              //|#2
+import com.manning.blogapps.chapter08.LRUCache;
+import com.manning.blogapps.chapter08.filedepot.Depot;
+import com.manning.blogapps.chapter08.filedepot.DepotNewsfeedWriter;
+import com.manning.blogapps.chapter08.filedepot.FileDepot;
+
+public class DepotNewsfeedServletCached extends HttpServlet {    
+	LRUCache cache = new LRUCache(5, 5400);                      
+                                                                
+    protected void doGet(                                        
+    		HttpServletRequest request,  HttpServletResponse response)   
+    		throws ServletException, IOException {                      
+
+        ServletContext application = this.getServletContext();    
+        Depot depot = (Depot) application.getAttribute("depot");  
+        if (depot == null) {                                      
+            depot = new FileDepot(request.getRealPath("/depot"));  
+            application.setAttribute("depot", depot);             
         }
         depot.update();
 
-        Date sinceDate = new Date(                                      //|#3
-           request.getDateHeader("If-Modified-Since"));                 //|#3
-        if (sinceDate != null) {                                        //|#3
-           if (depot.getLastUpdateDate().compareTo(sinceDate) <= 0) {   //|#3              
-              response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);  //|#3
-              response.flushBuffer();                                   //|#3
-              return;                                                   //|#3
+        Date sinceDate = new Date(request.getDateHeader("If-Modified-Since"));                 
+        if (sinceDate != null) {                                        
+           if (depot.getLastUpdateDate().compareTo(sinceDate) <= 0) {                
+              response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);  
+              response.flushBuffer();                                  
+              return;                                                   
            }
         }        
         try {
-            response.setContentType("application/xml;charset=utf-8");  //|#4
+            response.setContentType("application/xml;charset=utf-8");  
             
-            response.setDateHeader("Last-Modified",   //|#5
-               depot.getLastUpdateDate().getTime());  //|#5
-            response.setHeader(                                   //|#6
-               "Cache-Control","max-age=5400, must-revalidate");  //|#6
+            response.setDateHeader("Last-Modified", depot.getLastUpdateDate().getTime()); 
+            response.setHeader("Cache-Control","max-age=5400, must-revalidate");  
             
-            String url = request.getRequestURL().toString();          //|#7
-            String depotUrl = url.substring(0, url.lastIndexOf("/")); //|#7
-            if (cache.get(url) == null) {                             //|#7
-                
-               String format = request.getParameter("format");  //|#8
-               if (format == null) format = "rss_2.0";          //|#8
+            String url = request.getRequestURL().toString();          
+            String depotUrl = url.substring(0, url.lastIndexOf("/")); 
+
+            if (cache.get(url) == null) {                             
+               String format = request.getParameter("format");  
+               if (format == null) format = "rss_2.0";          
                
-               StringWriter stringWriter = new StringWriter();     //|#9
-               DepotNewsfeedWriter depotWriter =                   //|#9
-                   new DepotNewsfeedWriter(depot);                 //|#9
-               depotWriter.write(stringWriter, depotUrl, format);  //|#9
+               StringWriter stringWriter = new StringWriter();    
+               DepotNewsfeedWriter depotWriter = new DepotNewsfeedWriter(depot);                 
+               depotWriter.write(stringWriter, depotUrl, format); 
                
-               cache.put(request.getRequestURL().toString(),  //|#10
-                   stringWriter.toString());                  //|#10
+               cache.put(request.getRequestURL().toString(), stringWriter.toString());                 
             }
-            response.getWriter().write((String)cache.get(url));  //|#11
+            response.getWriter().write((String)cache.get(url));  
         } 
         catch (Exception ex) {
             String msg = "ERROR: generating newsfeed";
             log(msg, ex);
-            response.sendError(
-               HttpServletResponse.SC_INTERNAL_SERVER_ERROR, msg);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, msg);
         }
     }
     

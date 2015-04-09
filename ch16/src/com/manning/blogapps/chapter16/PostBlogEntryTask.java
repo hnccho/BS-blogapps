@@ -1,14 +1,21 @@
 package com.manning.blogapps.chapter16;
-import org.apache.tools.ant.*;
-import com.manning.blogapps.chapter10.blogclient.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class PostBlogEntryTask extends BaseBlogTask {  //|#1
-    protected String title = null;     //|#2
+import org.apache.tools.ant.BuildException;
+
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+
+public class PostBlogEntryTask extends BaseBlogTask {  
+
+	protected String title = null;     
     protected String category = null;
     protected String content = null;
     
-    public void execute() throws BuildException {  //#3
+    public void execute() throws BuildException {  
+    	
         try {
             System.out.println("Posting to blog");           
             System.out.println("   username=" + username);
@@ -19,37 +26,39 @@ public class PostBlogEntryTask extends BaseBlogTask {  //|#1
             System.out.println("   category=" + category);
             
             Blog blog = getBlog();
-            BlogEntry entry = blog.newEntry();  //|#4
+            BlogEntry entry = blog.newEntry();  
             
             if (title != null) {
-                entry.setTitle(title);  //|#5
+                entry.setTitle(title);  
             }
             if (category != null) {                 
                List categories = new ArrayList(); 
-               categories.add(
-                   new BlogEntry.Category(category));
-               entry.setCategories(categories);      //|#6
+               categories.add(new BlogEntry.Category(category));
+               entry.setCategories(categories);      
             }
             if (content != null) {
-                entry.setContent(
-                    new BlogEntry.Content(content)); //|#7
+                entry.setContent(new BlogEntry.Content(content)); 
             }
-            entry.setPublicationDate(new Date());    //|#8
-            entry.save();                            //|#9
+            entry.setPublicationDate(new Date());    
+            entry.save();                            
             String id = entry.getId();     
-            System.out.println("New post id is " + id);  //|#10
+            System.out.println("New post id is " + id);  
             
         } catch (Exception e) {
-            throw new BuildException(e);  //|#11
+            throw new BuildException(e); 
         }
     }
-    public void setTitle(String title) { //|#12
+    
+    public void setTitle(String title) { 
         this.title = title;
     }
+    
     public void setCategory(String category) {
         this.category = category;
     }
+    
     public void setContent(String content) {
         this.content = content;
     }
+    
 }

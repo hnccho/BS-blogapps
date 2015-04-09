@@ -31,9 +31,11 @@ public class PlanetConverterForRSS20 extends ConverterForRSS20 {
     public PlanetConverterForRSS20() {
         this("rss_2.0");
     }
+    
     protected PlanetConverterForRSS20(String type) {
         super(type);
     }
+    
     protected SyndEntry createSyndEntry(Item item) {
         DCModule dcm = (DCModule)item.getModule(DCModule.URI);
         Date dcdate = dcm != null ? dcm.getDate() : null;
@@ -44,4 +46,5 @@ public class PlanetConverterForRSS20 extends ConverterForRSS20 {
         }
         return syndEntry;
     }
+    
 }

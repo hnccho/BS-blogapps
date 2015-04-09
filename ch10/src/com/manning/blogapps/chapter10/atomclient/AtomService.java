@@ -15,7 +15,6 @@
  */
 package com.manning.blogapps.chapter10.atomclient;
 
-import com.manning.blogapps.chapter10.blogclient.BlogClientException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +22,8 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
+
+import com.manning.blogapps.chapter10.blogclient.BlogClientException;
 
 /**
  * This class models an Atom workspace.

@@ -1,11 +1,15 @@
 package com.manning.blogapps.chapter07.fetcher;       //|#1
-import com.sun.syndication.feed.synd.*;       //|#2;
+import java.io.File;
+import java.net.URL;
+import java.util.Iterator;
+
+import com.sun.syndication.feed.synd.SyndContent;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;       //|#2;
+import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.fetcher.FeedFetcher;
 import com.sun.syndication.fetcher.impl.FeedFetcherCache;
 import com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
-import java.io.*;
-import java.net.URL;
-import java.util.*;
 
 /**
  * Version of ParseFeed that uses a disk-based cache via the ROME Fetcher.

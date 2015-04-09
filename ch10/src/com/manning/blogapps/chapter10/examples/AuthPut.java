@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.examples;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
@@ -25,6 +27,7 @@ import org.apache.commons.httpclient.methods.PutMethod;
  * Sets content-type is application/atom+xml unless file ends with .gif or .jpg.
  */
 public class AuthPut {
+	
     public static void main(String[] args) throws Exception {
         if (args.length < 4) {
             System.out.println(
@@ -52,5 +55,6 @@ public class AuthPut {
         httpClient.executeMethod(method);  
         
         System.out.println(method.getResponseBodyAsString());
-    }    
+    }   
+    
 }

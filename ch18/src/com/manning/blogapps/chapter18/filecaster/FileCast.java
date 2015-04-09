@@ -34,6 +34,7 @@ import org.jdom.xpath.XPath;
  * </file-cast>
  */
 public class FileCast {
+	
     private String title;
     private String description;
     private String filename;
@@ -254,4 +255,5 @@ public class FileCast {
            DateFormat.DEFAULT, DateFormat.DEFAULT, Locale.getDefault());
         return format.parse(getString(elem, path));
     }
+    
 }

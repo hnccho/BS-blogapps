@@ -23,6 +23,7 @@ public class Utilities {
         sb.append( str.substring(str.length()-2) );
         return sb.toString();
     }
+    
     public String formatIso8601Time(long time) {
         return formatIso8601Date(new Date(time));
     }
@@ -33,6 +34,7 @@ public class Utilities {
     public String formatRfc822Date(Date date) {
         return rfc822Format.format(date);
     }
+    
     public String formatRfc822Time(long time) {
         return formatRfc822Date(new Date(time));
     }
@@ -78,6 +80,7 @@ public class Utilities {
      */
     public static String truncate(
             String str, int lower, int upper, String appendToEnd) {
+    	
         // strip markup from the string
         String str2 = removeHTML(str, false);
         
@@ -119,6 +122,7 @@ public class Utilities {
      * Author: Henri Yandell bayard@generationjava.com
      */
     public static String truncateNicely(String str, int lower, int upper, String appendToEnd) {
+    	
         // strip markup from the string
         String str2 = removeHTML(str, false);
         boolean diff = (str2.length() < str.length());
@@ -222,7 +226,8 @@ public class Utilities {
      * Optionally replace HTML tags with a space.
      */
     public static String removeHTML(String str, boolean addSpace) {
-        if (str == null) return "";
+ 
+    	if (str == null) return "";
         StringBuffer ret = new StringBuffer(str.length());
         int start = 0;
         int beginTag = str.indexOf("<");
@@ -271,8 +276,7 @@ public class Utilities {
      * @param str
      * @return
      */
-    public static String extractHTML(String str)
-    {
+    public static String extractHTML(String str) {
         if (str == null) return "";
         StringBuffer ret = new StringBuffer(str.length());
         int start = 0;
@@ -302,4 +306,5 @@ public class Utilities {
         }
         return ret.toString();
     }
+    
 }

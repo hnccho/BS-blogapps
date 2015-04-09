@@ -19,7 +19,10 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
 
-import com.manning.blogapps.chapter10.blogclient.*;
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
+import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
 
 /**
  1- read configuration file:
@@ -48,6 +51,7 @@ import com.manning.blogapps.chapter10.blogclient.*;
          3.1.2- delete message from mailbox
 */
 public class MailBlogger {
+	
     String codeword;
     String mail_username;
     String mail_password;
@@ -63,6 +67,7 @@ public class MailBlogger {
         mailBlogger.InitFromXml();
         mailBlogger.run();
     }
+    
     private void run() throws Exception {
         Properties props = new Properties();
         props.put("mail.store.protocol", "pop");       
@@ -114,6 +119,7 @@ public class MailBlogger {
         store.close(); 
         System.out.println("Posted " + count + " blog entries");
     }
+    
     private void InitFromXml() throws Exception {
         SAXBuilder builder = new SAXBuilder();
         Document doc = builder.build(new FileInputStream("MailBlogger.config.xml"));
@@ -140,5 +146,6 @@ public class MailBlogger {
         Element e = (Element)xpath.selectSingleNode(elem);
         return e!=null ? e.getText() : null;
     }
+    
 }
 

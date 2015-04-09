@@ -15,14 +15,17 @@
  */
 package com.manning.blogapps.chapter10.atomclient;
 
-import com.manning.blogapps.chapter10.blogclient.*;
 import java.io.File;
-import java.io.InputStream;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Link;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
+
+import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+import com.manning.blogapps.chapter10.blogclient.BlogResource;
+import com.sun.syndication.feed.atom.Entry;
+import com.sun.syndication.feed.atom.Link;
 
 public class AtomResource extends AtomEntry implements BlogResource {
  

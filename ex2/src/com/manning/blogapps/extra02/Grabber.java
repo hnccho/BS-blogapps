@@ -1,15 +1,27 @@
 package com.manning.blogapps.extra02;
 
-import com.manning.blogapps.chapter10.blogclient.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Properties;
+
 import org.apache.commons.lang.StringEscapeUtils;
 
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
+import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+
 public class Grabber {
+	
     public static void main(String[] ags) throws Exception { 
         new Grabber(); 
     }
+    
     public Grabber() throws Exception {
         
         Properties config = new Properties();                        
@@ -36,8 +48,8 @@ public class Grabber {
         Blog blog = con.getBlog(blog_id);
         Iterator entries = blog.getEntries();
         int count = 0; 
+        
         while (entries.hasNext() && count < max_entries) {
-            
             BlogEntry entry = (BlogEntry)entries.next();
             Date pubDate = entry.getPublicationDate();
             SimpleDateFormat format8 = new SimpleDateFormat("yyyyMMdd-HHmm");            
@@ -64,4 +76,5 @@ public class Grabber {
         indexpw.flush();
         indexpw.close();
     }
+    
 }

@@ -19,7 +19,8 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.DeleteMethod;
 
 public class AuthDelete {
-    public static void main(String[] args) throws Exception {
+
+	public static void main(String[] args) throws Exception {
         if (args.length < 3) {   
             System.out.println("USAGE: authdelete <username> <password> <url>");
             System.exit(-1);
@@ -35,5 +36,6 @@ public class AuthDelete {
         httpClient.executeMethod(method);
         System.out.println("Server returned status code: ");
     }
+	
 }
 

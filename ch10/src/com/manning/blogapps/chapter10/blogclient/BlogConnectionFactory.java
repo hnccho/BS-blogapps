@@ -15,8 +15,8 @@
  */
 package com.manning.blogapps.chapter10.blogclient;
 
-import com.manning.blogapps.chapter10.metaweblogclient.MetaWeblogConnection;
 import com.manning.blogapps.chapter10.atomclient.AtomBlogConnection;
+import com.manning.blogapps.chapter10.metaweblogclient.MetaWeblogConnection;
 
 /**
  * Entry point to the Blogapps blog client library.

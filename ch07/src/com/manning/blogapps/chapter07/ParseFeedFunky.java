@@ -1,5 +1,10 @@
 package com.manning.blogapps.chapter07;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.module.content.ContentModule;
 import com.sun.syndication.feed.synd.SyndContent;
@@ -7,10 +12,6 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.io.SyndFeedInput;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Iterator;
 
 /**
  * Simple examples that prints title, pub. date, description and content:encoded

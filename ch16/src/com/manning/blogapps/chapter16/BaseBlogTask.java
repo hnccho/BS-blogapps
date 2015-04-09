@@ -1,40 +1,51 @@
 package com.manning.blogapps.chapter16;
-import org.apache.tools.ant.*;
-import com.manning.blogapps.chapter10.blogclient.*;
+import org.apache.tools.ant.Task;
 
-public abstract class BaseBlogTask extends Task {   //|#1
-    protected String apitype = "metaweblog";  //|#2
+import com.manning.blogapps.chapter10.blogclient.Blog;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
+import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
+
+public abstract class BaseBlogTask extends Task {   
+ 
+	protected String apitype = "metaweblog";  
     protected String targeturl = null;
     protected String appkey = null;         
     protected String username = null;
     protected String password = null;  
     protected String blogid = null;  
 
-    protected Blog getBlog() throws Exception { //|#3
-        BlogConnection con =   //|#4
+    protected Blog getBlog() throws Exception { 
+        BlogConnection con =   
             BlogConnectionFactory.getBlogConnection(
                 apitype, targeturl, username, password);
         if (appkey != null) {          
-            con.setAppkey(appkey); //|#5
+            con.setAppkey(appkey); 
         }
-        return con.getBlog(blogid); //|#6
+        return con.getBlog(blogid); 
     }
-    public void setApitype(String apitype) { //|#7
+    
+    public void setApitype(String apitype) { 
         this.apitype = apitype;
     }
+    
     public void setTargeturl(String targeturl) {
         this.targeturl = targeturl;
     }
+    
     public void setAppkey(String appkey) {  
         this.appkey = appkey;
     }
+    
     public void setUsername(String username) {
         this.username = username;
     }
+    
     public void setPassword(String password) {
         this.password = password;
     }
+    
     public void setBlogid(String blogid) {
         this.blogid = blogid;
     }
+    
 }

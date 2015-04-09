@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jdom.Document;
@@ -32,14 +33,14 @@ import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedInput;
 import com.sun.syndication.io.WireFeedOutput;
-import java.util.Iterator;
 
 /**
  * Convenience methods for Rome/JDOM.
  * @author Dave Johnson
  */
 public class RomeUtilities {
-    public static final String FEED_TYPE = "atom_1.0"; 
+  
+	public static final String FEED_TYPE = "atom_1.0"; 
 
     /** 
      * Serialize a ROME Atom Entry, including foreign markup.
@@ -141,4 +142,5 @@ public class RomeUtilities {
         }
         return entry;
     }
+    
 }

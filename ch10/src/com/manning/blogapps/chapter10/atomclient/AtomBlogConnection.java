@@ -16,10 +16,10 @@
 package com.manning.blogapps.chapter10.atomclient;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
@@ -30,13 +30,12 @@ import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 
-import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 import com.manning.blogapps.chapter10.blogclient.Blog;
 import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 
 /**
  * Atom implementation of BlogClient interface.

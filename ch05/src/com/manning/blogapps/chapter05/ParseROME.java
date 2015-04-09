@@ -16,11 +16,14 @@ public class ParseROME {
     }
     
     public ParseROME(String[] args) throws Exception {
-        FileInputStream inputStream = new FileInputStream(args[0]);
+
+    	FileInputStream inputStream = new FileInputStream(args[0]);
         
         SyndFeedInput input = new SyndFeedInput();
         SyndFeed feed = input.build(new InputStreamReader(inputStream));        
-        Iterator items = feed.getEntries().iterator();       
+ 
+        Iterator<?> items = feed.getEntries().iterator();       
+
         while (items.hasNext()) { 
             SyndEntry item = (SyndEntry)items.next(); 
             System.out.println("Title: " + item.getTitle());            

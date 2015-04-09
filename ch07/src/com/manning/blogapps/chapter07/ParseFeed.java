@@ -1,8 +1,14 @@
-package com.manning.blogapps.chapter07;       //|#1
-import com.sun.syndication.feed.synd.*;       //|#2;
+package com.manning.blogapps.chapter07;       
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+
+import com.sun.syndication.feed.synd.SyndContent;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.io.SyndFeedInput;
-import java.io.*;
-import java.util.*;
 
 /**
  * Parses RSS or Atom via SyndFeed model, prints items.

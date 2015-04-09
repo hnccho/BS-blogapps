@@ -15,16 +15,19 @@
  */
 package com.manning.blogapps.chapter10.metaweblogclient;
 
-import com.manning.blogapps.chapter10.blogclient.BlogClientException;
 import java.io.File;
-import java.io.InputStream; 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
-import com.manning.blogapps.chapter10.blogclient.BlogResource;
+import java.io.InputStream;
 import java.util.Hashtable;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
+
+import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogResource;
+
 public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource {
-    private MetaWeblogBlog blog;
+ 
+	private MetaWeblogBlog blog;
     private String name;
     private String contentType;
     private String url;
@@ -38,22 +41,28 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
         this.contentType = contentType;
         this.uploadFile = uploadFile;
     }
+    
     public String getName() {
         return name;
     }
+    
     /** Returns null; not supported by MetaWeblog API */
     public String getToken() {
         return null;
     }
+    
     public String getURL() {
         return url;
     }
+    
     public void setURL(String url) {
         this.url = url;
     }
+    
     public String getContentType() {
         return contentType;
     }
+    
     public InputStream getAsStream() throws BlogClientException {
         HttpClient httpClient = new HttpClient();
         GetMethod method = new GetMethod(url);
@@ -70,18 +79,23 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
         } catch (Exception e) {
             throw new BlogClientException("ERROR: error reading file");
         }
-    }       
+    } 
+    
     public void save() throws BlogClientException {
         blog.saveResource(this);
     }
+    
     public void update(File newFile) throws BlogClientException {
         this.uploadFile = newFile;
         save();
     }
+    
     public File getUploadFile() {
         return uploadFile;
     }
+    
     /** Does nothing; not supported by MetaWeblog API */
     public void delete() throws BlogClientException {
     }
+    
 }

@@ -1,13 +1,14 @@
 package com.manning.blogapps.chapter07;
 
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Description;
-import com.sun.syndication.feed.rss.Item;
-import com.sun.syndication.io.WireFeedOutput;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Description;
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.io.WireFeedOutput;
 
 /**
  * Simple example that shows how to generate a feed.
@@ -15,10 +16,12 @@ import java.util.List;
 public class GenerateFeedRSS {
 
 	public static void main(String[] args) throws Exception {
-        if (args.length < 1) {
+
+		if (args.length < 1) {
             System.out.println("USAGE: GenerateRSS <feed-type>");
             return;
         }
+		
         Channel channel = new Channel();  
         channel.setFeedType(args[0]);
         channel.setLanguage("en-us");                

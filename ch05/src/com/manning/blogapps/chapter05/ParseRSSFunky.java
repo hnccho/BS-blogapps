@@ -18,6 +18,7 @@ public class ParseRSSFunky {
     }
 
 	public ParseRSSFunky(String[] args) throws Exception {
+		
         FileInputStream inputStream = new FileInputStream(args[0]);
         
         SAXBuilder builder = new SAXBuilder();
@@ -26,11 +27,11 @@ public class ParseRSSFunky {
         Element channel = root.getChild("channel");
         
         SimpleDateFormat rfc822_format = new SimpleDateFormat( "EEE, dd MMM yyyy hh:mm:ss z" );        
-        Iterator items = channel.getChildren("item").iterator();
+        Iterator<?> items = channel.getChildren("item").iterator();
         
-		Namespace dcNS = Namespace.getNamespace(           //|#1
+		Namespace dcNS = Namespace.getNamespace(           
 		      "dc","http://purl.org/dc/elements/1.1/");    
-		Namespace contentNS = Namespace.getNamespace(      //|#2
+		Namespace contentNS = Namespace.getNamespace(      
 		      "content","http://purl.org/rss/1.0/modules/content/");
 		
 		while (items.hasNext()) {   
@@ -44,17 +45,16 @@ public class ParseRSSFunky {
 		      Date date = rfc822_format.parse(dateString);
 		      System.out.println("Date: " + date.toString());
 		   } 
-		   else if ((dateString = item.getChildText("date", dcNS)) != null) {  //|#3
+		   else if ((dateString = item.getChildText("date", dcNS)) != null) {  
 		      Date date = ISO8601DateParser.parse(dateString);
 		      System.out.println("Date: " + date.toString());
 		   }
 		   String description = item.getChildText("description");
 		   if (description == null) {
-		      description = item.getChildText("encoded", contentNS);  //|#4
+		      description = item.getChildText("encoded", contentNS);  
 		   }
 		   System.out.println("Description: " + description);
 		   System.out.println("\n");
-		   
 		}
     }
 

@@ -15,13 +15,14 @@
  */
 package com.manning.blogapps.chapter10.atomclient;
 
-import com.manning.blogapps.chapter10.blogclient.impl.BaseBlogEntry;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import com.manning.blogapps.chapter10.blogclient.*;
+import com.manning.blogapps.chapter10.blogclient.BlogClientException;
+import com.manning.blogapps.chapter10.blogclient.BlogEntry;
+import com.manning.blogapps.chapter10.blogclient.impl.BaseBlogEntry;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
 

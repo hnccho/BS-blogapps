@@ -1,6 +1,7 @@
 package com.manning.blogapps.chapter15;
 
 import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -22,7 +24,6 @@ import org.jdom.xpath.XPath;
 
 import com.manning.blogapps.chapter05.AnyFeedParser;
 import com.manning.blogapps.chapter05.IFeedParser;
-import java.io.InputStreamReader;
 
 /* 
 <?xml version="1.0" encoding="utf-8" ?> 
@@ -43,6 +44,7 @@ import java.io.InputStreamReader;
 </cross-poster>
 */
 public class BlogMailer {
+	
     String smtp_server = null;
     String username = null;
     String password = null;
@@ -55,7 +57,9 @@ public class BlogMailer {
         blogMailer.initFromXml();
         blogMailer.run();
     }
+    
     public void run() throws Exception {
+    	
         System.out.println("BlogMailer for Java");
         
         Calendar cal = Calendar.getInstance();
@@ -69,6 +73,7 @@ public class BlogMailer {
         StringBuffer sb = new StringBuffer();
         
         Iterator subs = subscriptions.iterator();
+        
         while (subs.hasNext()) {
             String sub = (String)subs.next();
             
@@ -107,6 +112,7 @@ public class BlogMailer {
                }
             }
         }
+        
         String text = sb.toString();
         if (text.trim().length() > 0) {
             
@@ -167,5 +173,6 @@ public class BlogMailer {
         Element e = (Element)xpath.selectSingleNode(elem);
         return e!=null ? e.getText() : null;
     }
+    
 }
 

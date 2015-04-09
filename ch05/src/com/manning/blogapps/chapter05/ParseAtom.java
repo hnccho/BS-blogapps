@@ -2,12 +2,16 @@ package com.manning.blogapps.chapter05;
 
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.net.URL;
 
-import org.jdom.*;
+import org.jdom.Attribute;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.Namespace;
+import org.jdom.Parent;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 
@@ -33,8 +37,7 @@ public class ParseAtom {
         while (entries.hasNext()) {
             
             Element entry = (Element)entries.next();
-            String entryBase = 
-                entry.getAttributeValue("base", Namespace.XML_NAMESPACE);
+            String entryBase = entry.getAttributeValue("base", Namespace.XML_NAMESPACE);
             System.out.println("Title: " + entry.getChildText("title", ns));
             
             Element link = entry.getChild("link", ns);
@@ -43,8 +46,7 @@ public class ParseAtom {
                 System.out.println("Link: " + resolveURI(baseURI, link, href));
             }
             
-            Date date = ISO8601DateParser.parse(
-                    entry.getChildText("updated", ns));
+            Date date = ISO8601DateParser.parse(entry.getChildText("updated", ns));
             System.out.println("Date: " + date.toString());
             
             Element desc = entry.getChild("content", ns);
@@ -55,8 +57,7 @@ public class ParseAtom {
                 System.out.println("Description: " + desc.getText());
             } else if ("xhtml".equals(type)) {
                 XMLOutputter outputter = new XMLOutputter();
-                System.out.println("Description: "
-                        + outputter.outputString(desc.getChildren()));
+                System.out.println("Description: " + outputter.outputString(desc.getChildren()));
             }
         }
     }
@@ -115,7 +116,3 @@ public class ParseAtom {
     }
     
 }
-
-
-
-

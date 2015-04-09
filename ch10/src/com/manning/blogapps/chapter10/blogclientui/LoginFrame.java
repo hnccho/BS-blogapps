@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 package com.manning.blogapps.chapter10.blogclientui;
-import java.util.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.*;
-import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Properties;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 
 /**
  * Entry point for blog client UI, calls BlogClientFrame on successful login.

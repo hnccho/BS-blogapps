@@ -17,6 +17,8 @@ package com.manning.blogapps.chapter10.blogclientui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 import java.util.List;
@@ -24,12 +26,10 @@ import java.util.List;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 
+import com.manning.blogapps.chapter10.blogclient.Blog;
 import com.manning.blogapps.chapter10.blogclient.BlogConnection;
 import com.manning.blogapps.chapter10.blogclient.BlogConnectionFactory;
-import com.manning.blogapps.chapter10.blogclient.Blog;
 
 /**
  * Simple Swing-based blog client with tabbed UI.

@@ -22,9 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.manning.blogapps.chapter11.rome.ContentModule;
-
 import com.manning.blogapps.chapter11.utils.Utilities;
-
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndContent;

@@ -27,7 +27,8 @@ public class Utilities {
         sb.append( ":" );
         sb.append( str.substring(str.length()-2) );
         return sb.toString();
-    }   
+    } 
+    
     public String formatIso8601Time(long time) {
         return formatIso8601Date(new Date(time));
     }   
@@ -38,6 +39,7 @@ public class Utilities {
     public String formatRfc822Date(Date date) {
         return rfc822Format.format(date);
     } 
+    
     public String formatRfc822Time(long time) {
         return formatRfc822Date(new Date(time));
     } 
@@ -76,4 +78,5 @@ public class Utilities {
             throw new IOException("Closing file streams, " + ex.getMessage());
         }
     }
+    
 }
